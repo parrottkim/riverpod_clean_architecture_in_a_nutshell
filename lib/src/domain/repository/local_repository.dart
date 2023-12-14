@@ -1,4 +1,4 @@
-part of 'repository.dart';
+part of '../repository.dart';
 
 abstract class LocalRepository {
   Token? getToken();

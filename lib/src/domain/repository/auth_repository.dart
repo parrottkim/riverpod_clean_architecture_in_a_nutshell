@@ -1,4 +1,4 @@
-part of 'repository.dart';
+part of '../repository.dart';
 
 abstract class AuthRepository {
   Future<Token> login({required LoginRequest request});

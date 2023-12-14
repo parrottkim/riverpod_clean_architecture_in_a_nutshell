@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LoginErrorMessageContainer extends StatelessWidget {
-  const LoginErrorMessageContainer({super.key});
+class LoginInvalidContainer extends StatelessWidget {
+  const LoginInvalidContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,18 +13,21 @@ class LoginErrorMessageContainer extends StatelessWidget {
         color: Theme.of(context).colorScheme.errorContainer,
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(
             Icons.cancel,
             color: Theme.of(context).colorScheme.error,
           ),
           SizedBox(width: 8.0),
-          Text(
-            'Incorrect username or password',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.w500,
-                  color: Theme.of(context).colorScheme.error,
-                ),
+          Expanded(
+            child: Text(
+              'Incorrect username or password',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+            ),
           ),
         ],
       ),

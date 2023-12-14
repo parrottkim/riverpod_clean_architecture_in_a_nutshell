@@ -136,47 +136,49 @@ class _ShellLayoutState extends State<ShellLayout> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  border: Border.all(
-                    color: Theme.of(context).dividerColor,
-                  ),
+      appBar: PreferredSize(
+        preferredSize: AppBar().preferredSize,
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+                border: Border.all(
+                  color: Theme.of(context).dividerColor,
                 ),
-                child: InkWell(
-                  onTap: () {
-                    _insertOverlay();
-                    _searchController.text = GoRouterState.of(context).uri.toString();
-                  },
-                  child: Row(
-                    children: [
-                      const SizedBox(width: 16.0),
-                      const Text('path: '),
-                      Expanded(
-                        child: Text(GoRouterState.of(context).uri.toString()),
+              ),
+              child: InkWell(
+                onTap: () {
+                  _insertOverlay();
+                  _searchController.text = GoRouterState.of(context).uri.toString();
+                },
+                child: Row(
+                  children: [
+                    const SizedBox(width: 16.0),
+                    const Text('path: '),
+                    Expanded(
+                      child: Text(GoRouterState.of(context).uri.toString()),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(
+                        Icons.open_in_new,
+                        color: Theme.of(context).dividerColor,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(
-                          Icons.open_in_new,
-                          color: Theme.of(context).dividerColor,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            const Divider(height: 1.0),
-            Expanded(child: widget.child),
-          ],
+          ),
         ),
+      ),
+      body: Column(
+        children: [
+          const Divider(height: 1.0),
+          Expanded(child: widget.child),
+        ],
       ),
     );
     if (Theme.of(context).platform == TargetPlatform.windows || kIsWeb) {

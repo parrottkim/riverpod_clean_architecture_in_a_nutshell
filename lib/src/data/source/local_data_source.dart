@@ -1,4 +1,4 @@
-part of 'source.dart';
+part of '../source.dart';
 
 class LocalDataSource implements LocalRepository {
   final SharedPreferences _prefs;

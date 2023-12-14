@@ -9,5 +9,5 @@ class LoginState with _$LoginState {
   const factory LoginState.authenticated({
     required User user,
   }) = LoginAuthenticated;
-  const factory LoginState.failed() = LoginFailed;
+  const factory LoginState.invalid() = LoginInvalid;
 }

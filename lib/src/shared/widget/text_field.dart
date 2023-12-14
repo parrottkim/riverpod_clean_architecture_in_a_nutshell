@@ -1,4 +1,4 @@
-part of 'widget.dart';
+part of '../widget.dart';
 
 class OutlinedTextField extends StatelessWidget {
   final Function(String)? onChanged;

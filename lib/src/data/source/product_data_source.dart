@@ -1,4 +1,4 @@
-part of 'source.dart';
+part of '../source.dart';
 
 class ProductDataSource implements ProductRepository {
   final ProductService _service;

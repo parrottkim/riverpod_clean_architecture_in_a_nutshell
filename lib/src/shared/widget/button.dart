@@ -1,4 +1,4 @@
-part of 'widget.dart';
+part of '../widget.dart';
 
 class ContainedButton extends StatelessWidget {
   final Function()? onPressed;

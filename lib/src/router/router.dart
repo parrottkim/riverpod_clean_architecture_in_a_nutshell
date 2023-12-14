@@ -6,6 +6,7 @@ import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/layou
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/account/account_page.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/home_page.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/login/login_page.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/product/product_page.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/splash/splash_page.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router_interceptor.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router_notifier.dart';
@@ -15,12 +16,14 @@ part 'router.g.dart';
 final _key = GlobalKey<NavigatorState>();
 final _shellKey = GlobalKey<NavigatorState>();
 final _homeKey = GlobalKey<NavigatorState>();
+final _productKey = GlobalKey<NavigatorState>();
 final _accountKey = GlobalKey<NavigatorState>();
 
 class RouteNames {
   static const String splash = 'splash';
   static const String login = 'login';
   static const String home = 'home';
+  static const String product = 'product';
   static const String account = 'account';
 }
 
@@ -28,6 +31,7 @@ class Routes {
   static const String splash = '/';
   static const String login = '/login';
   static const String home = '/home';
+  static const String product = '/product';
   static const String account = '/account';
 }
 
@@ -86,6 +90,18 @@ class AppRouter {
               child: DashboardLayout(navigationShell: navigationShell),
             ),
             branches: [
+              StatefulShellBranch(
+                navigatorKey: _productKey,
+                routes: [
+                  GoRoute(
+                    name: RouteNames.product,
+                    path: Routes.product,
+                    pageBuilder: (_, __) => NoTransitionPage(
+                      child: ProductPage(),
+                    ),
+                  ),
+                ],
+              ),
               StatefulShellBranch(
                 navigatorKey: _homeKey,
                 routes: [

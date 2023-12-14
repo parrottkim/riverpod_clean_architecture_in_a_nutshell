@@ -1,4 +1,4 @@
-part of 'widget.dart';
+part of '../widget.dart';
 
 class LoadingOverlay extends StatelessWidget {
   static OverlayEntry? _currentOverlay;
@@ -62,7 +62,7 @@ class LoadingOverlay extends StatelessWidget {
         child: Logo(
           size: 20.0,
           isLoading: true,
-          backgroundColor: KeyColor.neutral.tone(70),
+          color: KeyColor.neutral.tone(70),
         ),
       ),
     );

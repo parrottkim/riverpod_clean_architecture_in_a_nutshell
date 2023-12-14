@@ -1,4 +1,4 @@
-part of 'source.dart';
+part of '../source.dart';
 
 class AuthDataSource implements AuthRepository {
   final AuthService _service;

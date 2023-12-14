@@ -4,16 +4,14 @@ part of '../controller.dart';
 class LoginController extends _$LoginController {
   @override
   Future<LoginState> build() async {
-    return LoginInitial();
+    return const LoginInitial();
   }
 
   Future<void> init() async {
+    await Future.delayed(const Duration(milliseconds: 3000));
     final token = ref.watch(localRepositoryProvider).getToken();
-
-    print(token);
-
     if (token == null) {
-      state = AsyncValue.data(LoginUnauthenticated());
+      state = const AsyncValue.data(LoginUnauthenticated());
     } else {
       final user = await ref.watch(authRepositoryProvider).get(id: token.id);
       state = AsyncValue.data(LoginAuthenticated(user: user));
@@ -25,15 +23,12 @@ class LoginController extends _$LoginController {
       await ref.watch(localRepositoryProvider).setToken(token: value);
       final user = await ref.watch(authRepositoryProvider).get(id: value.id);
       state = AsyncValue.data(LoginAuthenticated(user: user));
-    }).onError((error, stackTrace) {
-      print(stackTrace);
-      state = AsyncValue.data(LoginFailed());
-    });
+    }).onError(ref.read(errorControllerProvider.notifier).onError);
   }
 
   Future<void> logout() async {
     await ref.watch(localRepositoryProvider).removeToken();
-    state = AsyncValue.data(LoginInitial());
+    state = const AsyncValue.data(LoginInitial());
   }
 
   bool isValid({required String username, required String password}) {

@@ -3,6 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'model.freezed.dart';
 part 'model.g.dart';
-part 'product.dart';
-part 'user.dart';
-part 'widget.dart';
+part 'model/product.dart';
+part 'model/user.dart';
+part 'model/widget.dart';

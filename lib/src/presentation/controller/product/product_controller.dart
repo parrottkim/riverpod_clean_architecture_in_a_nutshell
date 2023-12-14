@@ -10,6 +10,7 @@ class ProductController extends _$ProductController {
   Future<ProductState> _fetchData({required int start}) async {
     final product =
         await ref.watch(productRepositoryProvider).getProductList(start: start);
+    print(product);
     return ProductState(product: product);
   }
 }

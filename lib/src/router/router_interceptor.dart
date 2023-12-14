@@ -25,8 +25,6 @@ class AppRouterInterceptor implements RouterInterceptor {
   FutureOr<String?> canGo(BuildContext context, GoRouterState state) async {
     final loginState = ref.read(loginControllerProvider).value;
 
-    print(loginState);
-
     final uri = state.uri;
 
     final isSplash = uri.path == Routes.splash;
