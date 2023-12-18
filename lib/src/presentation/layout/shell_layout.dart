@@ -59,22 +59,20 @@ class _ShellLayoutState extends State<ShellLayout> with SingleTickerProviderStat
               color: Colors.transparent,
               child: Padding(
                 padding: EdgeInsets.only(
-                    left: 8.0,
-                    right: 8.0,
-                    top: MediaQuery.of(context).viewPadding.top + 8.0),
+                    left: 8.0, right: 8.0, top: MediaQuery.of(context).viewPadding.top),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Container(
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: Theme.of(context).shadowColor,
+                          color: Theme.of(context).colorScheme.shadow,
                           spreadRadius: 0.0,
                           blurRadius: 2.0,
                           offset: const Offset(0, 3),
                         ),
                       ],
-                      color: Theme.of(context).cardColor,
+                      color: Theme.of(context).colorScheme.surface,
                     ),
                     child: Row(
                       children: [
@@ -138,37 +136,39 @@ class _ShellLayoutState extends State<ShellLayout> with SingleTickerProviderStat
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: AppBar().preferredSize,
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-                border: Border.all(
-                  color: Theme.of(context).dividerColor,
-                ),
+        child: Padding(
+          padding: EdgeInsets.only(
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+              top: MediaQuery.of(context).viewPadding.top),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              border: Border.all(
+                width: 1.0,
+                color: Theme.of(context).colorScheme.outline,
               ),
-              child: InkWell(
-                onTap: () {
-                  _insertOverlay();
-                  _searchController.text = GoRouterState.of(context).uri.toString();
-                },
-                child: Row(
-                  children: [
-                    const SizedBox(width: 16.0),
-                    const Text('path: '),
-                    Expanded(
-                      child: Text(GoRouterState.of(context).uri.toString()),
+            ),
+            child: InkWell(
+              onTap: () {
+                _insertOverlay();
+                _searchController.text = GoRouterState.of(context).uri.toString();
+              },
+              child: Row(
+                children: [
+                  const SizedBox(width: 16.0),
+                  const Text('path: '),
+                  Expanded(
+                    child: Text(GoRouterState.of(context).uri.toString()),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.open_in_new,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.open_in_new,
-                        color: Theme.of(context).dividerColor,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

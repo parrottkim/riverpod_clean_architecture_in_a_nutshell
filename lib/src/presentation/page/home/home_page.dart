@@ -8,11 +8,24 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(productControllerProvider);
+    final state = ref.watch(categoryControllerProvider);
+    print(state);
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
+        actions: [
+          InkWell(
+            onTap: () {},
+            customBorder: const CircleBorder(),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.shopping_cart_outlined,
+              ),
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: [

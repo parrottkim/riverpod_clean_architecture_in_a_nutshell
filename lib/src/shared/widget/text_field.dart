@@ -40,29 +40,29 @@ class OutlinedTextField extends StatelessWidget {
         floatingLabelBehavior: FloatingLabelBehavior.never,
         fillColor: Theme.of(context).colorScheme.onPrimary,
         prefixIcon: Icon(prefixIcon),
-        prefixIconColor: KeyColor.neutral.tone(60),
+        prefixIconColor: Theme.of(context).colorScheme.outline,
         labelText: labelText,
-        labelStyle: TextStyle(color: KeyColor.neutral.tone(40)),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.outline),
         hintText: hintText,
         isDense: true,
         contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-        border: UnderlineInputBorder(
+        border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
           borderSide: const BorderSide(
             width: 1.0,
           ),
         ),
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
           borderSide: BorderSide(
-            color: KeyColor.neutral.tone(60),
+            color: Theme.of(context).colorScheme.outline,
             width: 1.0,
           ),
         ),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
           borderSide: BorderSide(
-            color: KeyColor.primary,
+            color: Theme.of(context).colorScheme.primary,
             width: 1.0,
           ),
         ),

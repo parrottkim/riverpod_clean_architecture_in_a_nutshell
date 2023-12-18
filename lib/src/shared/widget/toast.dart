@@ -19,7 +19,7 @@ class Toast extends StatelessWidget {
         case ToastType.standard:
           return Theme.of(context).colorScheme.surface;
         case ToastType.error:
-          return Theme.of(context).colorScheme.errorContainer;
+          return Theme.of(context).colorScheme.error;
         case ToastType.verified:
           return Theme.of(context).colorScheme.tertiary;
       }
@@ -30,7 +30,7 @@ class Toast extends StatelessWidget {
         case ToastType.standard:
           return Theme.of(context).colorScheme.onSurface;
         case ToastType.error:
-          return Theme.of(context).colorScheme.error;
+          return Theme.of(context).colorScheme.onError;
         case ToastType.verified:
           return Theme.of(context).colorScheme.onTertiary;
       }
@@ -61,7 +61,7 @@ class Toast extends StatelessWidget {
             Text(
               message,
               style: TextStyle(
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
                 color: getTextColor(),
               ),
             ),
