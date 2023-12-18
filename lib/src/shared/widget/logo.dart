@@ -3,13 +3,19 @@ part of '../widget.dart';
 class Logo extends StatelessWidget {
   final double size;
   final bool isLoading;
-  final Color? color;
+  final bool filled;
+  final Color? backgroundColor;
+  final Color? borderColor;
+  final Color? iconColor;
 
   const Logo({
     super.key,
     this.size = 40.0,
     this.isLoading = false,
-    this.color,
+    this.filled = false,
+    this.backgroundColor,
+    this.borderColor,
+    this.iconColor,
   });
 
   @override
@@ -23,17 +29,22 @@ class Logo extends StatelessWidget {
             height: size * 2.0,
             child: CircularProgressIndicator(
               strokeWidth: size * 0.1,
-              color: color ?? Theme.of(context).colorScheme.primary,
+              valueColor: AlwaysStoppedAnimation(
+                  borderColor ?? Theme.of(context).colorScheme.primary),
             ),
           ),
         Container(
           padding: EdgeInsets.all(size * 0.3),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(
-              width: size * 0.1,
-              color: color ?? Theme.of(context).colorScheme.primary,
-            ),
+            border: !filled
+                ? Border.all(
+                    width: size * 0.1,
+                    color: borderColor ?? Theme.of(context).colorScheme.primary,
+                  )
+                : null,
+            color:
+                filled ? backgroundColor ?? Theme.of(context).colorScheme.primary : null,
           ),
           child: Transform.rotate(
             angle: 0.5,
@@ -41,7 +52,9 @@ class Logo extends StatelessWidget {
             child: Icon(
               Icons.local_airport,
               size: size,
-              color: color ?? Theme.of(context).colorScheme.primary,
+              color: filled
+                  ? iconColor ?? Theme.of(context).colorScheme.onPrimary
+                  : iconColor ?? Theme.of(context).colorScheme.primary,
             ),
           ),
         ),

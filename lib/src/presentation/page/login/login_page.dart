@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/data/model.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
@@ -38,33 +37,25 @@ class LoginPage extends HookConsumerWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Logo(
-                size: 22.0,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              SizedBox(width: 6.0),
-              Text(
-                'DUMMYSHOP',
-                textHeightBehavior: const TextHeightBehavior(
-                  applyHeightToLastDescent: false,
-                  leadingDistribution: TextLeadingDistribution.even,
-                ),
-                style: GoogleFonts.oswald(
-                  textStyle: TextStyle(
-                    fontSize: 36.0,
-                    color: Theme.of(context).colorScheme.primary,
-                    height: 1.2,
-                  ),
-                ),
-              ),
-            ],
+          Spacer(),
+          Logo(
+            borderColor: Theme.of(context).colorScheme.onSurface,
+            iconColor: Theme.of(context).colorScheme.onSurface,
           ),
-          SizedBox(height: 30.0),
+          SizedBox(height: 6.0),
+          Text(
+            'DUMMYSHOP',
+            textHeightBehavior: const TextHeightBehavior(
+              applyHeightToLastDescent: false,
+              leadingDistribution: TextLeadingDistribution.even,
+            ),
+            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                  fontWeight: FontWeight.w700,
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
+          ),
+          Spacer(),
           if (loginState is LoginInvalid) LoginInvalidContainer(),
           AutofillGroup(
             child: Column(
@@ -119,6 +110,7 @@ class LoginPage extends HookConsumerWidget {
                 : null,
             child: Text('Login'),
           ),
+          Spacer(),
         ],
       ),
     );

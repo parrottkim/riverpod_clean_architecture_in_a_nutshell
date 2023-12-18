@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
 
 class KeyColor {
@@ -11,6 +10,69 @@ class KeyColor {
   static Color error = const Color(0xFFBA1A1A);
 }
 
+TextTheme textTheme = TextTheme(
+  displayLarge: const TextStyle(
+    fontSize: 57.0,
+    height: 1.2,
+  ).withLetterSpacing(-4),
+  displayMedium: const TextStyle(
+    fontSize: 45.0,
+    height: 1.2,
+  ).withLetterSpacing(-4),
+  displaySmall: const TextStyle(
+    fontSize: 36.0,
+    height: 1.2,
+  ).withLetterSpacing(-4),
+  headlineLarge: const TextStyle(
+    fontSize: 32.0,
+    height: 1.2,
+  ).withLetterSpacing(-4),
+  headlineMedium: const TextStyle(
+    fontSize: 28.0,
+    height: 1.2,
+  ).withLetterSpacing(-4),
+  headlineSmall: const TextStyle(
+    fontSize: 24.0,
+    height: 1.2,
+  ).withLetterSpacing(-4),
+  titleLarge: const TextStyle(
+    fontSize: 22.0,
+    height: 1.2,
+  ).withLetterSpacing(-4),
+  titleMedium: const TextStyle(
+    fontSize: 16.0,
+    height: 1.2,
+  ).withLetterSpacing(-4),
+  titleSmall: const TextStyle(
+    fontSize: 14.0,
+    height: 1.2,
+  ).withLetterSpacing(-4),
+  labelLarge: const TextStyle(
+    fontSize: 14.0,
+    height: 1.2,
+  ).withLetterSpacing(-2),
+  labelMedium: const TextStyle(
+    fontSize: 12.0,
+    height: 1.2,
+  ).withLetterSpacing(-2),
+  labelSmall: const TextStyle(
+    fontSize: 11.0,
+    height: 1.2,
+  ).withLetterSpacing(-2),
+  bodyLarge: const TextStyle(
+    fontSize: 16.0,
+    height: 1.2,
+  ).withLetterSpacing(-2),
+  bodyMedium: const TextStyle(
+    fontSize: 14.0,
+    height: 1.2,
+  ).withLetterSpacing(-2),
+  bodySmall: const TextStyle(
+    fontSize: 12.0,
+    height: 1.2,
+  ).withLetterSpacing(-2),
+);
+
 extension Material3Palette on Color {
   Color tone(int tone) {
     assert(tone >= 0 && tone <= 100);
@@ -20,9 +82,18 @@ extension Material3Palette on Color {
   }
 }
 
+extension PercentageLetterSpacing on TextStyle {
+  TextStyle withLetterSpacing(double percentage) {
+    double letterSpacing = double.parse(((percentage / 100) * fontSize!)
+        .toStringAsFixed(2)); // toStringAsFixed(2): to two decimal places
+    return copyWith(letterSpacing: letterSpacing);
+  }
+}
+
 ThemeData lightTheme = ThemeData(
   useMaterial3: true,
-  fontFamily: GoogleFonts.roboto().fontFamily,
+  fontFamily: 'Pretendard',
+  textTheme: textTheme,
   colorScheme: ColorScheme.light(
     brightness: Brightness.light,
     primary: KeyColor.primary,
@@ -59,7 +130,8 @@ ThemeData lightTheme = ThemeData(
 
 ThemeData darkTheme = ThemeData(
   useMaterial3: true,
-  fontFamily: GoogleFonts.roboto().fontFamily,
+  fontFamily: 'Pretendard',
+  textTheme: textTheme,
   colorScheme: ColorScheme.dark(
     brightness: Brightness.dark,
     primary: KeyColor.primary.tone(80),
@@ -75,7 +147,7 @@ ThemeData darkTheme = ThemeData(
     tertiaryContainer: KeyColor.tertiary.tone(30),
     onTertiaryContainer: KeyColor.tertiary.tone(90),
     error: KeyColor.error.tone(80),
-    onError: KeyColor.error.tone(80),
+    onError: KeyColor.error.tone(20),
     errorContainer: KeyColor.error.tone(30),
     onErrorContainer: KeyColor.error.tone(90),
     surface: KeyColor.neutral.tone(6),

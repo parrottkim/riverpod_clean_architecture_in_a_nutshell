@@ -8,9 +8,19 @@ class CategoryController extends _$CategoryController {
   }
 
   Future<CategoryState> _fetchData() async {
-    final categories =
-    await ref.watch(productRepositoryProvider).getCategoryList();
+    final categories = await ref.watch(productRepositoryProvider).getCategoryList();
     print(categories);
-    return CategoryState(categories: categories);
+
+    final List<Category> list = [];
+    for (var category in categories) {
+      list.add(Category(
+        tag: category,
+        name: category.replaceAllMapped(RegExp(r'\b\w'), (Match match) {
+          return match.group(0)!.toUpperCase();
+        }).replaceAll(RegExp(r'-'), ' '),
+      ));
+    }
+
+    return CategoryState(categories: list);
   }
 }

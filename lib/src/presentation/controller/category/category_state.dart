@@ -4,6 +4,6 @@ part of '../controller.dart';
 class CategoryState with _$CategoryState {
   const factory CategoryState({
     @Default(0) int currentIndex,
-    required List<String> categories,
+    required List<Category> categories,
   }) = _CategoryState;
 }

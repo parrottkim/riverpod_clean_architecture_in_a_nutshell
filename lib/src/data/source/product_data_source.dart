@@ -10,7 +10,7 @@ class ProductDataSource implements ProductRepository {
       _service.getProductList(start: start, limit: limit);
 
   @override
-  Future<List<String>> getCategoryList() =>_service.getCategoryList();
+  Future<List<String>> getCategoryList() => _service.getCategoryList();
 }
 
 @riverpod

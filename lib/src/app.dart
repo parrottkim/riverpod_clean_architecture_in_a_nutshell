@@ -6,8 +6,6 @@ import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/provider.da
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/theme/theme.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
 
-GlobalKey navKey = GlobalKey<ScaffoldState>();
-
 class App extends ConsumerWidget {
   const App({super.key});
 
@@ -21,7 +19,7 @@ class App extends ConsumerWidget {
         case ErrorNotify(:final message):
           toast.showToast(
             child: Toast(
-              type: ToastType.verified,
+              type: ToastType.error,
               message: message,
             ),
           );
@@ -29,7 +27,6 @@ class App extends ConsumerWidget {
     });
 
     return MaterialApp.router(
-      key: navKey,
       title: 'DUMMYSHOP',
       builder: (context, child) => Overlay(
         initialEntries: [

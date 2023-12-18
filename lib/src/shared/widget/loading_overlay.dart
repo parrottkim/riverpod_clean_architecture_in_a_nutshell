@@ -62,7 +62,8 @@ class LoadingOverlay extends StatelessWidget {
         child: Logo(
           size: 20.0,
           isLoading: true,
-          color: KeyColor.neutral.tone(70),
+          borderColor: KeyColor.neutral.tone(70),
+          iconColor: KeyColor.neutral.tone(70),
         ),
       ),
     );

@@ -35,9 +35,10 @@ class ErrorController extends _$ErrorController {
           final data = exception.response?.data;
           switch (exception.response?.statusCode) {}
           state = ErrorNotify(
-              code: exception.response?.statusCode,
-              message: '${exception.response?.statusCode} ${data['message']}',
-              exception: exception);
+            code: exception.response?.statusCode,
+            message: '${exception.response?.statusCode} ${data['message']}',
+            exception: exception,
+          );
         case DioExceptionType.cancel:
           break;
         case DioExceptionType.unknown:
