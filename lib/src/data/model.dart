@@ -5,5 +5,6 @@ part 'model.freezed.dart';
 part 'model.g.dart';
 part 'model/category.dart';
 part 'model/product.dart';
+part 'model/token.dart';
 part 'model/user.dart';
 part 'model/widget.dart';

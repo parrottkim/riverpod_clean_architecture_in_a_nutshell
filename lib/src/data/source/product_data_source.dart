@@ -6,11 +6,16 @@ class ProductDataSource implements ProductRepository {
   ProductDataSource({required ProductService service}) : _service = service;
 
   @override
-  Future<Product> getProductList({required int start, int limit = 20}) =>
+  Future<List<String>> getCategoryList() => _service.getCategoryList();
+
+  @override
+  Future<List<Product>> getProductList({required int start, int limit = 6}) =>
       _service.getProductList(start: start, limit: limit);
 
   @override
-  Future<List<String>> getCategoryList() => _service.getCategoryList();
+  Future<List<Product>> getProductListWithCategory(
+          {required String category, required int start, int limit = 6}) =>
+      _service.getProductListWithCategory(category: category, start: start, limit: limit);
 }
 
 @riverpod

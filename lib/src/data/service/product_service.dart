@@ -4,12 +4,19 @@ part of '../service.dart';
 abstract class ProductService {
   factory ProductService(Dio dio, {String baseUrl}) = _ProductService;
 
+  @GET('products/categories')
+  Future<List<String>> getCategoryList();
+
   @GET('products')
-  Future<Product> getProductList({
-    @Query('skip') required int start,
+  Future<List<Product>> getProductList({
+    @Query('start') required int start,
     @Query('limit') required int limit,
   });
 
-  @GET('products/categories')
-  Future<List<String>> getCategoryList();
+  @GET('products/category/{category}')
+  Future<List<Product>> getProductListWithCategory({
+    @Path() required String category,
+    @Query('start') required int start,
+    @Query('limit') required int limit,
+  });
 }

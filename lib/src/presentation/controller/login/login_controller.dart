@@ -13,7 +13,9 @@ class LoginController extends _$LoginController {
     if (token == null) {
       state = const AsyncValue.data(LoginUnauthenticated());
     } else {
-      final user = await ref.watch(authRepositoryProvider).get(id: token.id);
+      print(decodeJwt(token.token));
+      final decodedToken = DecodedToken.fromJson(decodeJwt(token.token));
+      final user = await ref.watch(authRepositoryProvider).get(id: decodedToken.id);
       state = AsyncValue.data(LoginAuthenticated(user: user));
     }
   }
@@ -21,7 +23,8 @@ class LoginController extends _$LoginController {
   Future<void> login({required LoginRequest request}) async {
     await ref.watch(authRepositoryProvider).login(request: request).then((value) async {
       await ref.watch(localRepositoryProvider).setToken(token: value);
-      final user = await ref.watch(authRepositoryProvider).get(id: value.id);
+      final decodedToken = DecodedToken.fromJson(decodeJwt(value.token));
+      final user = await ref.watch(authRepositoryProvider).get(id: decodedToken.id);
       state = AsyncValue.data(LoginAuthenticated(user: user));
     }).onError(ref.read(errorControllerProvider.notifier).onError);
   }

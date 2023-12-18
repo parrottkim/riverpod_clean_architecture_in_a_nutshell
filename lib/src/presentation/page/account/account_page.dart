@@ -10,6 +10,20 @@ class AccountPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final account = ref.watch(loginControllerProvider).value;
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          InkWell(
+            onTap: () {},
+            customBorder: const CircleBorder(),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Icon(
+                Icons.shopping_cart_outlined,
+              ),
+            ),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/widget/home_article.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/widget/home_banner.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/widget/home_category.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -9,17 +11,37 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(categoryControllerProvider);
-    print(state);
+    final account = ref.watch(loginControllerProvider).value;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        centerTitle: false,
+        backgroundColor: Colors.transparent,
+        title: Row(
+          children: [
+            CircleAvatar(
+              backgroundImage: NetworkImage('https://picsum.photos/200'),
+            ),
+            SizedBox(width: 12.0),
+            if (account is LoginAuthenticated)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Welcome Back!', style: Theme.of(context).textTheme.titleMedium),
+                  Text(
+                    account.user.username,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              )
+          ],
+        ),
         actions: [
           InkWell(
             onTap: () {},
-            customBorder: const CircleBorder(),
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
+            customBorder: CircleBorder(),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
               child: Icon(
                 Icons.shopping_cart_outlined,
               ),
@@ -27,34 +49,18 @@ class HomePage extends ConsumerWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          HomeBanner(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HomeBanner(),
+            SizedBox(height: 16.0),
+            HomeArticle(),
+            SizedBox(height: 16.0),
+            HomeCategory(),
+          ],
+        ),
       ),
     );
   }
 }
-
-// [
-// "smartphones",
-// "laptops",
-// "fragrances",
-// "skincare",
-// "groceries",
-// "home-decoration",
-// "furniture",
-// "tops",
-// "womens-dresses",
-// "womens-shoes",
-// "mens-shirts",
-// "mens-shoes",
-// "mens-watches",
-// "womens-watches",
-// "womens-bags",
-// "womens-jewellery",
-// "sunglasses",
-// "automotive",
-// "motorcycle",
-// "lighting"
-// ]

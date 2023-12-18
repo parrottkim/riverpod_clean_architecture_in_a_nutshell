@@ -3,7 +3,7 @@ part of '../provider.dart';
 @riverpod
 Dio http(HttpRef ref) {
   final options = BaseOptions(
-    baseUrl: 'https://dummyjson.com/',
+    baseUrl: 'https://fakestoreapi.com/',
     contentType: Headers.jsonContentType,
     responseType: ResponseType.json,
     connectTimeout: const Duration(milliseconds: 3000),
