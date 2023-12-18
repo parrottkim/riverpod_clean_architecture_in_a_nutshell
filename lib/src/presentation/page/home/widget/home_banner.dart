@@ -5,11 +5,14 @@ class HomeBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 8 / 3,
-      child: Image.network(
-        'https://picsum.photos/800',
-        fit: BoxFit.cover,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: AspectRatio(
+        aspectRatio: 8 / 3,
+        child: Image.network(
+          'https://picsum.photos/800',
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

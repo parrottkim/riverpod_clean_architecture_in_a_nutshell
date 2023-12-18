@@ -9,4 +9,7 @@ abstract class ProductService {
     @Query('skip') required int start,
     @Query('limit') required int limit,
   });
+
+  @GET('products/categories')
+  Future<List<String>> getCategoryList();
 }

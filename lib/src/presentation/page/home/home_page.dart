@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/widget/home_banner.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/widget/home_category_list.dart';
 
-class HomePage extends ConsumerWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(productControllerProvider);
-
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
@@ -17,6 +14,8 @@ class HomePage extends ConsumerWidget {
       body: Column(
         children: [
           HomeBanner(),
+          SizedBox(height: 16.0),
+          HomeCategoryList(),
         ],
       ),
     );
