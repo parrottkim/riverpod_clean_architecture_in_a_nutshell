@@ -47,9 +47,9 @@ class CategoryList extends StatelessWidget {
           mainAxisSpacing: 16.0,
           crossAxisSpacing: 8.0,
           itemCount: items.length,
-          itemBuilder: (BuildContext context, int index) =>
-              CategoryListItem(item: items[index]),
-          staggeredTileBuilder: (int index) =>
+          itemBuilder: ( context,  index) =>
+              CategoryListItem(index: index, item: items[index]),
+          staggeredTileBuilder: ( index) =>
               index == 0 ? const StaggeredTile.fit(2) : new StaggeredTile.fit(1),
         ),
       ],
@@ -57,18 +57,23 @@ class CategoryList extends StatelessWidget {
   }
 }
 
-class CategoryListItem extends StatelessWidget {
+class CategoryListItem extends ConsumerWidget {
+  final int index;
   final Category item;
 
   const CategoryListItem({
     super.key,
+    required this.index,
     required this.item,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        ref.read(dashboardControllerProvider.notifier).changeIndex(0);
+        ref.read(categoryControllerProvider.notifier).changeIndex(index);
+      },
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,

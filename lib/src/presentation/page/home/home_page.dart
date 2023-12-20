@@ -16,7 +16,6 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        backgroundColor: Colors.transparent,
         title: Row(
           children: [
             CircleAvatar(

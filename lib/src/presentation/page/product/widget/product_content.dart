@@ -13,7 +13,7 @@ class ProductContent extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final product = ref.watch(productControllerProvider);
     return switch (product) {
-      AsyncData(:final value) => ProductList(items: value.products),
+      AsyncData(:final value) => ProductList(state: value),
       _ => _loading(),
     };
   }
@@ -30,33 +30,49 @@ class ProductContent extends ConsumerWidget {
   }
 }
 
-class ProductList extends StatelessWidget {
-  final List<Product> items;
+class ProductList extends ConsumerWidget {
+  final ProductState state;
 
   const ProductList({
     super.key,
-    required this.items,
+    required this.state,
   });
 
   @override
-  Widget build(BuildContext context) {
-    return StaggeredGridView.countBuilder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      padding: const EdgeInsets.all(16.0),
-      crossAxisCount: 2,
-      mainAxisSpacing: 16.0,
-      crossAxisSpacing: 8.0,
-      itemCount: items.length,
-      itemBuilder: (BuildContext context, int index) =>
-          ProductListItem(item: items[index]),
-      staggeredTileBuilder: (int index) => StaggeredTile.fit(1),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return NotificationListener<ScrollNotification>(
+      child: StaggeredGridView.countBuilder(
+        shrinkWrap: true,
+        padding: const EdgeInsets.all(16.0),
+        crossAxisCount: 2,
+        mainAxisSpacing: 16.0,
+        crossAxisSpacing: 8.0,
+        itemCount: state.hasReachEnd ? state.products.length : state.products.length + 1,
+        itemBuilder: (context, index) => index != state.products.length
+            ? ProductListItem(item: state.products[index])
+            : const Padding(
+                padding: EdgeInsets.only(top: 20.0, bottom: 32.0),
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+        staggeredTileBuilder: (index) =>
+            !state.hasReachEnd && index == state.products.length
+                ? const StaggeredTile.fit(2)
+                : const StaggeredTile.fit(1),
+      ),
+      onNotification: (notification) {
+        if (notification.metrics.extentBefore == notification.metrics.maxScrollExtent) {
+          ref.read(productControllerProvider.notifier).loadMore();
+        }
+        return false;
+      },
     );
   }
 }
 
 class ProductListItem extends StatelessWidget {
-  final Product item;
+  final ProductElement item;
 
   const ProductListItem({
     super.key,
@@ -78,11 +94,12 @@ class ProductListItem extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 1,
                 child: Ink.image(
-                  image: NetworkImage(item.image),
+                  image: NetworkImage(item.thumbnail),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-            SizedBox(height: 4.0),
+            const SizedBox(height: 4.0),
             Text(
               item.title,
               maxLines: 1,

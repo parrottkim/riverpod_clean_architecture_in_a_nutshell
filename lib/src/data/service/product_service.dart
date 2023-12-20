@@ -8,15 +8,15 @@ abstract class ProductService {
   Future<List<String>> getCategoryList();
 
   @GET('products')
-  Future<List<Product>> getProductList({
-    @Query('start') required int start,
+  Future<Product> getProductList({
+    @Query('skip') required int start,
     @Query('limit') required int limit,
   });
 
   @GET('products/category/{category}')
-  Future<List<Product>> getProductListWithCategory({
+  Future<Product> getProductListWithCategory({
     @Path() required String category,
-    @Query('start') required int start,
+    @Query('skip') required int start,
     @Query('limit') required int limit,
   });
 }

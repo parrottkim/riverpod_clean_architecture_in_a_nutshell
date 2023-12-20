@@ -4,7 +4,7 @@ part of '../controller.dart';
 sealed class ProductState with _$ProductState {
   factory ProductState({
     @Default(0) int currentIndex,
-    @Default([]) List<Product> products,
+    @Default([]) List<ProductElement> products,
     @Default(false) bool hasReachEnd,
   }) = _PostState;
 }

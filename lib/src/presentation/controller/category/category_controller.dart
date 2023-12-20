@@ -10,17 +10,30 @@ class CategoryController extends _$CategoryController {
   Future<CategoryState> _fetchData() async {
     final categories = await ref.watch(productRepositoryProvider).getCategoryList();
 
+    print(categories);
+
     final List<Category> list = [];
     list.add(Category(tag: 'all', name: 'All'));
     for (var category in categories) {
-      list.add(Category(
-        tag: category,
-        name: category.replaceAllMapped(RegExp(r"\b(\w)|'(\w)"), (Match match) {
-          return match.group(1) != null
-              ? match.group(0)!.toUpperCase()
-              : "'${match.group(2)!.toLowerCase()}";
-        }),
-      ));
+      list.add(
+        Category(
+          tag: category,
+          name: category
+              .replaceFirstMapped(
+                RegExp(r'men'),
+                (match) => "${match.group(0)}'",
+              )
+              .replaceAll('-', ' ')
+              .replaceAllMapped(
+                RegExp(r"\b\w"),
+                (match) => match.group(0)!.toUpperCase(),
+              )
+              .replaceAllMapped(
+                RegExp(r"'(\w)"),
+                (match) => "'${match.group(1)!.toLowerCase()}",
+              ),
+        ),
+      );
     }
 
     return CategoryState(categories: list);
@@ -30,6 +43,7 @@ class CategoryController extends _$CategoryController {
     final value = state.valueOrNull;
 
     if (value != null) {
+      if (value.selectedIndex == index) return;
       state = AsyncValue.data(value.copyWith(selectedIndex: index));
     }
   }

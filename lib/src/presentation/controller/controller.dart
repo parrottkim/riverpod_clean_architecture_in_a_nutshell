@@ -8,6 +8,7 @@ import '../../data/model.dart';
 
 part 'category/category_controller.dart';
 part 'category/category_state.dart';
+part 'dashboard/dashboard_controller.dart';
 part 'controller.freezed.dart';
 part 'controller.g.dart';
 part 'error/error_controller.dart';

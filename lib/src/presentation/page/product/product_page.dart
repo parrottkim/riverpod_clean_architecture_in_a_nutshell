@@ -11,31 +11,30 @@ class ProductPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Products'),
+        title: const Text('Products'),
         actions: [
           InkWell(
             onTap: () async =>
                 await ref.read(productControllerProvider.notifier).loadMore(),
             customBorder: const CircleBorder(),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
+            child: const Padding(
+              padding: EdgeInsets.all(12.0),
               child: Icon(
                 Icons.shopping_cart_outlined,
               ),
             ),
           ),
         ],
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(48.0),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 16.0),
-            child: ProductCategory(),
-          ),
-        ),
+        bottom: ProductCategory(),
+        // bottom: const PreferredSize(
+        //   preferredSize: Size.fromHeight(48.0),
+        //   child: Padding(
+        //     padding: EdgeInsets.only(bottom: 16.0),
+        //     child: ProductCategory(),
+        //   ),
+        // ),
       ),
-      body: SingleChildScrollView(
-        child: ProductContent(),
-      ),
+      body: ProductContent(),
     );
   }
 }

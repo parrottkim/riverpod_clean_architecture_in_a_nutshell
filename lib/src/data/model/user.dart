@@ -17,14 +17,33 @@ class LoginRequest with _$LoginRequest {
 @freezed
 class User with _$User {
   const factory User({
-    required Address address,
     required int id,
+    required String firstName,
+    required String lastName,
+    required String maidenName,
+    required int age,
+    required String gender,
     required String email,
+    required String phone,
     required String username,
     required String password,
-    required Name name,
-    required String phone,
-    @JsonKey(name: '__v') required int v,
+    required DateTime birthDate,
+    required String image,
+    required String bloodGroup,
+    required int height,
+    required double weight,
+    required String eyeColor,
+    required Hair hair,
+    required String domain,
+    required String ip,
+    required Address address,
+    required String macAddress,
+    required String university,
+    required Bank bank,
+    required Company company,
+    required String ein,
+    required String ssn,
+    required String userAgent,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -33,32 +52,57 @@ class User with _$User {
 @freezed
 class Address with _$Address {
   const factory Address({
-    required Geolocation geolocation,
+    required String address,
     required String city,
-    required String street,
-    required int number,
-    required String zipcode,
+    required Coordinates coordinates,
+    required String postalCode,
+    required String state,
   }) = _Address;
 
   factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
 }
 
 @freezed
-class Geolocation with _$Geolocation {
-  const factory Geolocation({
-    required String lat,
-    required String long,
-  }) = _Geolocation;
+class Coordinates with _$Coordinates {
+  const factory Coordinates({
+    required double lat,
+    required double lng,
+  }) = _Coordinates;
 
-  factory Geolocation.fromJson(Map<String, dynamic> json) => _$GeolocationFromJson(json);
+  factory Coordinates.fromJson(Map<String, dynamic> json) => _$CoordinatesFromJson(json);
 }
 
 @freezed
-class Name with _$Name {
-  const factory Name({
-    required String firstname,
-    required String lastname,
-  }) = _Name;
+class Bank with _$Bank {
+  const factory Bank({
+    required String cardExpire,
+    required String cardNumber,
+    required String cardType,
+    required String currency,
+    required String iban,
+  }) = _Bank;
 
-  factory Name.fromJson(Map<String, dynamic> json) => _$NameFromJson(json);
+  factory Bank.fromJson(Map<String, dynamic> json) => _$BankFromJson(json);
+}
+
+@freezed
+class Company with _$Company {
+  const factory Company({
+    required Address address,
+    required String department,
+    required String name,
+    required String title,
+  }) = _Company;
+
+  factory Company.fromJson(Map<String, dynamic> json) => _$CompanyFromJson(json);
+}
+
+@freezed
+class Hair with _$Hair {
+  const factory Hair({
+    required String color,
+    required String type,
+  }) = _Hair;
+
+  factory Hair.fromJson(Map<String, dynamic> json) => _$HairFromJson(json);
 }
