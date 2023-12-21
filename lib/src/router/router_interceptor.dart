@@ -23,7 +23,7 @@ class AppRouterInterceptor implements RouterInterceptor {
 
   @override
   FutureOr<String?> canGo(BuildContext context, GoRouterState state) async {
-    final loginState = ref.read(loginControllerProvider).value;
+    final loginState = ref.read(loginControllerProvider);
 
     final uri = state.uri;
 

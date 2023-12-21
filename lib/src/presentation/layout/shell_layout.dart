@@ -162,8 +162,8 @@ class _ShellLayoutState extends State<ShellLayout> with SingleTickerProviderStat
                   Expanded(
                     child: Text(GoRouterState.of(context).uri.toString()),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.open_in_new,
                     ),

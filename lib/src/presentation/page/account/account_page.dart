@@ -8,31 +8,26 @@ class AccountPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final account = ref.watch(loginControllerProvider).value;
+    final account = ref.watch(loginControllerProvider);
+
     return Scaffold(
-      appBar: AppBar(
+      appBar: const CustomAppBar(
         actions: [
-          InkWell(
-            onTap: () {},
-            customBorder: const CircleBorder(),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Icon(
-                Icons.shopping_cart_outlined,
-              ),
-            ),
-          ),
+          CartIconButton(),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             if (account is LoginAuthenticated) Text('${account.user}'),
-            SizedBox(height: 12.0),
-            ContainedButton(
+            const SizedBox(height: 12.0),
+            CustomElevatedButton(
               onPressed: () async =>
                   await ref.read(loginControllerProvider.notifier).logout(),
-              child: Text('Logout'),
+              child: const Text('Logout'),
+            ),
+            const OutlinedTextField(
+              prefixIcon: Icons.search,
             ),
           ],
         ),

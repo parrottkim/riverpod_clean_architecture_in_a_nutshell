@@ -15,7 +15,7 @@ class HomeArticle extends StatelessWidget {
             'Best Article',
             style: Theme.of(context).textTheme.titleLarge,
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           InkWell(
             onTap: () => launchUrl(Uri.parse(
                 'https://www.zdnet.com/article/zdnet-editors-favorite-tech-products-of-2023/')),
@@ -23,11 +23,11 @@ class HomeArticle extends StatelessWidget {
               children: [
                 Ink.image(
                   height: 210.0,
-                  image: AssetImage('assets/images/article.png'),
+                  image: const AssetImage('assets/images/article.png'),
                   fit: BoxFit.cover,
                 ),
                 Ink(
-                  padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
                   color: Theme.of(context).colorScheme.tertiaryContainer,
                   width: double.infinity,
                   child: Text(

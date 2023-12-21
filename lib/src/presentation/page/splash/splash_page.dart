@@ -35,7 +35,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
               borderColor: Theme.of(context).colorScheme.onSurface,
               iconColor: Theme.of(context).colorScheme.onSurface,
             ),
-            SizedBox(height: 6.0),
+            const SizedBox(height: 6.0),
             Text(
               'DUMMYSHOP',
               textHeightBehavior: const TextHeightBehavior(

@@ -7,6 +7,7 @@ import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/home_page.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/login/login_page.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/product/product_page.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/search/search_page.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/splash/splash_page.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router_interceptor.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router_notifier.dart';
@@ -25,6 +26,7 @@ class RouteNames {
   static const String home = 'home';
   static const String product = 'product';
   static const String account = 'account';
+  static const String search = 'search';
 }
 
 class Routes {
@@ -33,6 +35,7 @@ class Routes {
   static const String home = '/home';
   static const String product = '/product';
   static const String account = '/account';
+  static const String search = 'search';
 }
 
 @riverpod
@@ -96,9 +99,18 @@ class AppRouter {
                   GoRoute(
                     name: RouteNames.product,
                     path: Routes.product,
-                    pageBuilder: (_, __) => NoTransitionPage(
+                    pageBuilder: (_, __) => const NoTransitionPage(
                       child: ProductPage(),
                     ),
+                    routes: [
+                      GoRoute(
+                        name: RouteNames.search,
+                        path: Routes.search,
+                        pageBuilder: (_, __) => const NoTransitionPage(
+                          child: SearchPage(),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -108,7 +120,7 @@ class AppRouter {
                   GoRoute(
                     name: RouteNames.home,
                     path: Routes.home,
-                    pageBuilder: (_, __) => NoTransitionPage(
+                    pageBuilder: (_, __) => const NoTransitionPage(
                       child: HomePage(),
                     ),
                   ),
@@ -120,7 +132,7 @@ class AppRouter {
                   GoRoute(
                     name: RouteNames.account,
                     path: Routes.account,
-                    pageBuilder: (_, __) => NoTransitionPage(
+                    pageBuilder: (_, __) => const NoTransitionPage(
                       child: AccountPage(),
                     ),
                   ),

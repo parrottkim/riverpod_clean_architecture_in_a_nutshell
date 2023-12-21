@@ -127,6 +127,7 @@ ThemeData lightTheme = ThemeData(
     inversePrimary: KeyColor.primary.tone(90),
   ),
   appBarTheme: const AppBarTheme(
+    centerTitle: false,
     scrolledUnderElevation: 0,
   ),
   splashFactory: InkSparkle.splashFactory,
@@ -160,11 +161,14 @@ ThemeData darkTheme = ThemeData(
     onSurfaceVariant: KeyColor.neutralVariant.tone(80),
     outline: KeyColor.neutralVariant.tone(60),
     outlineVariant: KeyColor.neutralVariant.tone(30),
+    scrim: KeyColor.neutral.tone(0),
+    shadow: KeyColor.neutral.tone(0),
     inverseSurface: KeyColor.neutral.tone(90),
     onInverseSurface: KeyColor.neutral.tone(20),
     inversePrimary: KeyColor.primary.tone(40),
   ),
   appBarTheme: const AppBarTheme(
+    centerTitle: false,
     scrolledUnderElevation: 0,
   ),
   splashFactory: InkSparkle.splashFactory,

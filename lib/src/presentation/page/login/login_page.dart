@@ -19,12 +19,13 @@ class LoginPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final loginState = ref.watch(loginControllerProvider).value;
+    final loginState = ref.watch(loginControllerProvider);
 
-    ref.listen<AsyncValue<LoginState>>(loginControllerProvider, (_, state) {
-      switch (state.value) {
+    ref.listen<LoginState>(loginControllerProvider, (_, state) {
+      switch (state) {
         case LoginAuthenticated():
           context.go(path ?? Routes.home);
+        default:
       }
     });
 
@@ -38,12 +39,12 @@ class LoginPage extends HookConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         children: [
-          Spacer(),
+          const Spacer(),
           Logo(
             borderColor: Theme.of(context).colorScheme.onSurface,
             iconColor: Theme.of(context).colorScheme.onSurface,
           ),
-          SizedBox(height: 6.0),
+          const SizedBox(height: 6.0),
           Text(
             'DUMMYSHOP',
             textHeightBehavior: const TextHeightBehavior(
@@ -55,8 +56,8 @@ class LoginPage extends HookConsumerWidget {
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
           ),
-          Spacer(),
-          if (loginState is LoginInvalid) LoginInvalidContainer(),
+          const Spacer(),
+          if (loginState is LoginInvalid) const LoginInvalidContainer(),
           AutofillGroup(
             child: Column(
               children: [
@@ -67,7 +68,7 @@ class LoginPage extends HookConsumerWidget {
                   autofillHints: const [AutofillHints.username],
                   textInputAction: TextInputAction.next,
                 ),
-                SizedBox(height: 12.0),
+                const SizedBox(height: 12.0),
                 OutlinedTextField(
                   onSubmitted: ref.read(loginControllerProvider.notifier).isValid(
                           username: usernameController.text,
@@ -93,8 +94,8 @@ class LoginPage extends HookConsumerWidget {
               ],
             ),
           ),
-          SizedBox(height: 12.0),
-          ContainedButton(
+          const SizedBox(height: 12.0),
+          CustomElevatedButton(
             onPressed: ref.read(loginControllerProvider.notifier).isValid(
                     username: usernameController.text, password: passwordController.text)
                 ? () async {
@@ -108,9 +109,9 @@ class LoginPage extends HookConsumerWidget {
                     LoadingOverlay.hide();
                   }
                 : null,
-            child: Text('Login'),
+            child: const Text('Login'),
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );

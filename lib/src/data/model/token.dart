@@ -12,9 +12,15 @@ class Token with _$Token {
 @freezed
 class DecodedToken with _$DecodedToken {
   const factory DecodedToken({
-    @JsonKey(name: 'sub') required int id,
-    required String user,
+    required int id,
+    required String username,
+    required String email,
+    required String firstName,
+    required String lastName,
+    required String gender,
+    required String image,
     required int iat,
+    required int exp,
   }) = _DecodedToken;
 
   factory DecodedToken.fromJson(Map<String, dynamic> json) =>

@@ -12,7 +12,7 @@ class RouterNotifier extends _$RouterNotifier implements Listenable {
 
   @override
   Future<void> build() async {
-    loginState = await ref.watch(loginControllerProvider.future);
+    loginState = ref.watch(loginControllerProvider);
 
     ref.listenSelf((_, __) {
       if (state.isLoading) return;

@@ -9,5 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 part 'source.g.dart';
 part 'source/auth_data_source.dart';
+part 'source/cart_data_source.dart';
 part 'source/local_data_source.dart';
 part 'source/product_data_source.dart';
+part 'source/search_data_soruce.dart';

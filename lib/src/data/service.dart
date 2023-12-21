@@ -4,4 +4,5 @@ import 'package:riverpod_clean_architecture_in_a_nutshell/src/data/model.dart';
 
 part 'service.g.dart';
 part 'service/auth_service.dart';
+part 'service/cart_service.dart';
 part 'service/product_service.dart';

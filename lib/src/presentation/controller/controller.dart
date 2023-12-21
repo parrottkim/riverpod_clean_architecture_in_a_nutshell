@@ -6,6 +6,8 @@ import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/tool/jwt_de
 
 import '../../data/model.dart';
 
+part 'cart/cart_controller.dart';
+part 'cart/cart_state.dart';
 part 'category/category_controller.dart';
 part 'category/category_state.dart';
 part 'dashboard/dashboard_controller.dart';
@@ -17,3 +19,5 @@ part 'login/login_controller.dart';
 part 'login/login_state.dart';
 part 'product/product_controller.dart';
 part 'product/product_state.dart';
+part 'search/search_controller.dart';
+part 'search/search_state.dart';

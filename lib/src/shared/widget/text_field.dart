@@ -1,6 +1,8 @@
 part of '../widget.dart';
 
 class OutlinedTextField extends StatelessWidget {
+  final bool? enabled;
+  final bool readOnly;
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
   final TextEditingController? controller;
@@ -11,9 +13,12 @@ class OutlinedTextField extends StatelessWidget {
   final String? labelText;
   final String? hintText;
   final IconData? prefixIcon;
+  final EdgeInsetsGeometry contentPadding;
 
   const OutlinedTextField({
     super.key,
+    this.enabled,
+    this.readOnly = false,
     this.onChanged,
     this.onSubmitted,
     this.controller,
@@ -24,11 +29,14 @@ class OutlinedTextField extends StatelessWidget {
     this.labelText,
     this.hintText,
     this.prefixIcon,
+    this.contentPadding = const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      enabled: enabled,
+      readOnly: readOnly,
       onChanged: onChanged,
       onSubmitted: onSubmitted,
       controller: controller,
@@ -37,15 +45,23 @@ class OutlinedTextField extends StatelessWidget {
       keyboardType: keyboardType,
       autofillHints: autofillHints,
       decoration: InputDecoration(
+        isDense: true,
         floatingLabelBehavior: FloatingLabelBehavior.never,
-        fillColor: Theme.of(context).colorScheme.onPrimary,
-        prefixIcon: Icon(prefixIcon),
+        prefixIcon: prefixIcon != null
+            ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Icon(prefixIcon, size: 24.0),
+              )
+            : null,
         prefixIconColor: Theme.of(context).colorScheme.outline,
+        prefixIconConstraints: BoxConstraints(
+          minWidth: 0.0,
+          minHeight: 0.0,
+        ),
         labelText: labelText,
         labelStyle: TextStyle(color: Theme.of(context).colorScheme.outline),
         hintText: hintText,
-        isDense: true,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+        contentPadding: contentPadding,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
           borderSide: const BorderSide(

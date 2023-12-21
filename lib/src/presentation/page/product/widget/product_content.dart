@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -5,6 +6,7 @@ import 'package:riverpod_clean_architecture_in_a_nutshell/src/data/model.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/theme/theme.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProductContent extends ConsumerWidget {
   const ProductContent({super.key});
@@ -50,19 +52,14 @@ class ProductList extends ConsumerWidget {
         itemCount: state.hasReachEnd ? state.products.length : state.products.length + 1,
         itemBuilder: (context, index) => index != state.products.length
             ? ProductListItem(item: state.products[index])
-            : const Padding(
-                padding: EdgeInsets.only(top: 20.0, bottom: 32.0),
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
+            : const ProductLoading(),
         staggeredTileBuilder: (index) =>
             !state.hasReachEnd && index == state.products.length
                 ? const StaggeredTile.fit(2)
                 : const StaggeredTile.fit(1),
       ),
       onNotification: (notification) {
-        if (notification.metrics.extentBefore == notification.metrics.maxScrollExtent) {
+        if (notification.metrics.pixels >= notification.metrics.maxScrollExtent - 20.0) {
           ref.read(productControllerProvider.notifier).loadMore();
         }
         return false;
@@ -93,9 +90,19 @@ class ProductListItem extends StatelessWidget {
               color: Colors.white,
               child: AspectRatio(
                 aspectRatio: 1,
-                child: Ink.image(
-                  image: NetworkImage(item.thumbnail),
+                child: CachedNetworkImage(
+                  imageUrl: item.thumbnail,
+                  placeholder: (context, url) => Shimmer.fromColors(
+                    baseColor: Theme.of(context).colorScheme.shadow.withOpacity(0.1),
+                    highlightColor:
+                        Theme.of(context).colorScheme.shadow.withOpacity(0.15),
+                    child: Container(
+                      color: Colors.white,
+                    ),
+                  ),
                   fit: BoxFit.cover,
+                  fadeOutDuration: const Duration(milliseconds: 300),
+                  fadeInDuration: const Duration(milliseconds: 300),
                 ),
               ),
             ),
@@ -112,6 +119,25 @@ class ProductListItem extends StatelessWidget {
               '\$${item.price}',
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProductLoading extends StatelessWidget {
+  const ProductLoading({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: 50.0,
+      child: Shimmer.fromColors(
+        baseColor: Theme.of(context).colorScheme.shadow.withOpacity(0.1),
+        highlightColor: Theme.of(context).colorScheme.shadow.withOpacity(0.15),
+        child: Container(
+          color: Colors.white,
         ),
       ),
     );

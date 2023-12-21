@@ -41,16 +41,16 @@ class CategoryList extends StatelessWidget {
         const SizedBox(height: 8.0),
         StaggeredGridView.countBuilder(
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          physics: const NeverScrollableScrollPhysics(),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           crossAxisCount: 2, //as p
           mainAxisSpacing: 16.0,
           crossAxisSpacing: 8.0,
           itemCount: items.length,
-          itemBuilder: ( context,  index) =>
+          itemBuilder: (context, index) =>
               CategoryListItem(index: index, item: items[index]),
-          staggeredTileBuilder: ( index) =>
-              index == 0 ? const StaggeredTile.fit(2) : new StaggeredTile.fit(1),
+          staggeredTileBuilder: (index) =>
+              index == 0 ? const StaggeredTile.fit(2) : const StaggeredTile.fit(1),
         ),
       ],
     );
@@ -79,9 +79,10 @@ class CategoryListItem extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Ink(
-            height: 120.0,
-            decoration: BoxDecoration(
-              image: DecorationImage(
+            color: Colors.white,
+            child: AspectRatio(
+              aspectRatio: 3 / 2,
+              child: Ink.image(
                 image: AssetImage('assets/images/${item.tag}.png'),
                 fit: BoxFit.cover,
               ),
