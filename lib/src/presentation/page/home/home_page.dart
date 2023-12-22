@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/widget/home_appbar.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/widget/home_article.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/widget/home_banner.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/widget/home_category.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/widget/home_appbar_widget.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/widget/home_article_widget.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/widget/home_banner_widget.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/widget/home_category_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,16 +10,16 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: HomeAppBar(),
+      appBar: HomeAppBarWidget(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HomeBanner(),
-            SizedBox(height: 16.0),
-            HomeArticle(),
-            SizedBox(height: 16.0),
-            HomeCategory(),
+            HomeBannerWidget(),
+            SizedBox(height: 32.0),
+            HomeArticleWidget(),
+            SizedBox(height: 32.0),
+            HomeCategoryWidget(),
           ],
         ),
       ),

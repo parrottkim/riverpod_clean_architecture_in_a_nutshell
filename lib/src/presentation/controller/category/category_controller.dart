@@ -10,31 +10,22 @@ class CategoryController extends _$CategoryController {
   Future<CategoryState> _fetchData() async {
     final categories = await ref.watch(productRepositoryProvider).getCategoryList();
 
-    print(categories);
-
-    final List<Category> list = [];
-    list.add(Category(tag: 'all', name: 'All'));
+    final List<Category> list = [
+      Category(
+        tag: 'all',
+        name: Intl.message('category_all'),
+      )
+    ];
     for (var category in categories) {
       list.add(
         Category(
           tag: category,
-          name: category
-              .replaceFirstMapped(
-                RegExp(r'men'),
-                (match) => "${match.group(0)}'",
-              )
-              .replaceAll('-', ' ')
-              .replaceAllMapped(
-                RegExp(r"\b\w"),
-                (match) => match.group(0)!.toUpperCase(),
-              )
-              .replaceAllMapped(
-                RegExp(r"'(\w)"),
-                (match) => "'${match.group(1)!.toLowerCase()}",
-              ),
+          name: Intl.message('category_${category.replaceAll('-', '_')}'),
         ),
       );
     }
+
+    print(list);
 
     return CategoryState(categories: list);
   }

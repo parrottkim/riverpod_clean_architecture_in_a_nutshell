@@ -8,8 +8,8 @@ import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/theme/theme
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
 import 'package:shimmer/shimmer.dart';
 
-class ProductContent extends ConsumerWidget {
-  const ProductContent({super.key});
+class ProductContentWidget extends ConsumerWidget {
+  const ProductContentWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

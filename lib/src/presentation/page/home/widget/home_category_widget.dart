@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:intl/intl.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/data/model.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
 
-class HomeCategory extends ConsumerWidget {
-  const HomeCategory({super.key});
+class HomeCategoryWidget extends ConsumerWidget {
+  const HomeCategoryWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,11 +35,11 @@ class CategoryList extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
-            'Categories',
+            Intl.message('home_category_title'),
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
-        const SizedBox(height: 8.0),
+        const SizedBox(height: 16.0),
         StaggeredGridView.countBuilder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -88,7 +89,7 @@ class CategoryListItem extends ConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(height: 4.0),
+          const SizedBox(height: 8.0),
           Text(
             item.name,
             textAlign: TextAlign.center,

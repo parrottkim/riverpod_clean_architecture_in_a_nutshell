@@ -9,3 +9,13 @@ class NavigationItem with _$NavigationItem {
     required String label,
   }) = _NavigationItem;
 }
+
+enum PopularKeywordType { fresh, up, down }
+
+@freezed
+class PopularKeyword with _$PopularKeyword {
+  const factory PopularKeyword({
+    required String name,
+    required PopularKeywordType type,
+  }) = _PopularKeyword;
+}

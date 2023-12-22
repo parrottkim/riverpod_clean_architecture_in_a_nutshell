@@ -12,6 +12,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # localization
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.18.0
   # architecture
   flutter_riverpod: ^2.4.9
   riverpod_annotation: ^2.3.3
@@ -82,3 +86,6 @@ flutter:
           weight: 200
         - asset: assets/fonts/Pretendard/Pretendard-Thin.otf
           weight: 100
+flutter_intl:
+  enabled: true
+  main_locale: en_US

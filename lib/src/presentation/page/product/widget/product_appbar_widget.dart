@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/product/product_page.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/product/widget/product_search_bar.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/product/widget/product_tabbar.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/product/widget/product_searchbar_widget.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/product/widget/product_tabbar_widget.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
 
-class ProductAppBar extends ConsumerWidget implements PreferredSizeWidget {
-  const ProductAppBar({super.key});
+class ProductAppBarWidget extends ConsumerWidget implements PreferredSizeWidget {
+  const ProductAppBarWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return CustomAppBar(
-      title: const ProductSearchBar(),
+      title: const ProductSearchBarWidget(),
       actions: [
         InkWell(
           onTap: () {},
@@ -24,7 +24,7 @@ class ProductAppBar extends ConsumerWidget implements PreferredSizeWidget {
           ),
         ),
       ],
-      bottom: const ProductTabBar(),
+      bottom: const ProductTabBarWidget(),
     );
   }
 

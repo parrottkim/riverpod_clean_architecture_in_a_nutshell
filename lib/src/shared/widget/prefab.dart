@@ -21,4 +21,47 @@ class WidgetPrefab {
       label: 'Account',
     )
   ];
+
+  static const List<PopularKeyword> popularKeywordItems = [
+    PopularKeyword(
+      name: 'Phone',
+      type: PopularKeywordType.up,
+    ),
+    PopularKeyword(
+      name: 'Macbook',
+      type: PopularKeywordType.down,
+    ),
+    PopularKeyword(
+      name: 'Shirts',
+      type: PopularKeywordType.up,
+    ),
+    PopularKeyword(
+      name: 'Sunglasses',
+      type: PopularKeywordType.fresh,
+    ),
+    PopularKeyword(
+      name: 'Watch',
+      type: PopularKeywordType.fresh,
+    ),
+    PopularKeyword(
+      name: 'Ring',
+      type: PopularKeywordType.down,
+    ),
+    PopularKeyword(
+      name: 'Perfume',
+      type: PopularKeywordType.fresh,
+    ),
+    PopularKeyword(
+      name: 'Motorcycle',
+      type: PopularKeywordType.down,
+    ),
+    PopularKeyword(
+      name: 'Tops',
+      type: PopularKeywordType.up,
+    ),
+    PopularKeyword(
+      name: 'Lamp',
+      type: PopularKeywordType.fresh,
+    ),
+  ];
 }

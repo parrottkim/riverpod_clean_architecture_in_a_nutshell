@@ -6,8 +6,8 @@ import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/contr
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/product/product_page.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
 
-class ProductTabBar extends ConsumerWidget implements PreferredSizeWidget {
-  const ProductTabBar({super.key});
+class ProductTabBarWidget extends ConsumerWidget implements PreferredSizeWidget {
+  const ProductTabBarWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -95,6 +95,10 @@ class CategoryListItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return CustomChip(
+      onTap: () {
+        ref.read(categoryControllerProvider.notifier).changeIndex(index);
+        tabController.animateTo(index);
+      },
       borderColor: selectedIndex == index
           ? Theme.of(context).colorScheme.onSurface
           : Theme.of(context).colorScheme.outline.withOpacity(0.5),
@@ -102,43 +106,13 @@ class CategoryListItem extends ConsumerWidget {
           ? Theme.of(context).colorScheme.onSurface
           : Theme.of(context).colorScheme.surface,
       child: Text(
-      item.name,
-      style: Theme.of(context).textTheme.labelLarge?.copyWith(
-        fontWeight: selectedIndex == index ? FontWeight.w700 : FontWeight.w400,
-        color: selectedIndex == index
-            ? Theme.of(context).colorScheme.onInverseSurface
-            : Theme.of(context).colorScheme.outline,
-      ),
-    ),);
-    return Ink(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0),
-        border: Border.all(
-            color: selectedIndex == index
-                ? Theme.of(context).colorScheme.onSurface
-                : Theme.of(context).colorScheme.outline.withOpacity(0.5)),
-        color: selectedIndex == index
-            ? Theme.of(context).colorScheme.onSurface
-            : Theme.of(context).colorScheme.surface,
-      ),
-      child: InkWell(
-        onTap: () {
-          ref.read(categoryControllerProvider.notifier).changeIndex(index);
-          tabController.animateTo(index);
-        },
-        borderRadius: BorderRadius.circular(20.0),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
-          child: Text(
-            item.name,
-            style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  fontWeight: selectedIndex == index ? FontWeight.w700 : FontWeight.w400,
-                  color: selectedIndex == index
-                      ? Theme.of(context).colorScheme.onInverseSurface
-                      : Theme.of(context).colorScheme.outline,
-                ),
-          ),
-        ),
+        item.name,
+        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+              fontWeight: selectedIndex == index ? FontWeight.w700 : FontWeight.w400,
+              color: selectedIndex == index
+                  ? Theme.of(context).colorScheme.onInverseSurface
+                  : Theme.of(context).colorScheme.outline,
+            ),
       ),
     );
   }

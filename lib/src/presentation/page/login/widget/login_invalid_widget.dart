@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class LoginInvalidContainer extends StatelessWidget {
-  const LoginInvalidContainer({super.key});
+class LoginInvalidWidget extends StatelessWidget {
+  const LoginInvalidWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class LoginInvalidContainer extends StatelessWidget {
           const SizedBox(width: 8.0),
           Expanded(
             child: Text(
-              'Incorrect username or password',
+              Intl.message('login_invalid'),
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.w500,
                     color: Theme.of(context).colorScheme.error,

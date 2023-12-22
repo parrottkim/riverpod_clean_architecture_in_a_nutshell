@@ -13,6 +13,7 @@ class SearchController extends _$SearchController {
   }
 
   Future<void> addKeyword({required String text}) async {
+    if (state.recentKeywords.isNotEmpty && state.recentKeywords.first == text) return;
     await ref.watch(searchRepositoryProvider).setKeyword(keyword: text);
     state = state.copyWith(recentKeywords: [text, ...state.recentKeywords]);
   }

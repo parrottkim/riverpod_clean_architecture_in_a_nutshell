@@ -106,8 +106,11 @@ class AppRouter {
                       GoRoute(
                         name: RouteNames.search,
                         path: Routes.search,
-                        pageBuilder: (_, __) => const NoTransitionPage(
-                          child: SearchPage(),
+                        parentNavigatorKey: _shellKey,
+                        pageBuilder: (_, state) => MaterialPage(
+                          key: state.pageKey,
+                          restorationId: state.pageKey.value,
+                          child: const SearchPage(),
                         ),
                       ),
                     ],
@@ -139,7 +142,7 @@ class AppRouter {
                 ],
               ),
             ],
-          )
+          ),
         ],
       ),
     ],
