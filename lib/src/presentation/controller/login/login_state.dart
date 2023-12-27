@@ -1,7 +1,7 @@
 part of '../controller.dart';
 
 @freezed
-sealed class LoginState with _$LoginState {
+class LoginState with _$LoginState {
   const factory LoginState.initial() = LoginInitial;
   const factory LoginState.unauthenticated({
     @Default(LoginRequest.empty) LoginRequest request,

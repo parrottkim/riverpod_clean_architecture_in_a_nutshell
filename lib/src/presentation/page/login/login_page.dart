@@ -23,7 +23,6 @@ class LoginPage extends ConsumerWidget {
       switch (state) {
         case LoginAuthenticated():
           context.go(path ?? Routes.home);
-        default:
       }
     });
 

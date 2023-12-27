@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
 
-class SearchInitialAppBarWidget extends HookConsumerWidget
-    implements PreferredSizeWidget {
-  const SearchInitialAppBarWidget({super.key});
+class SearchDialogAppBarWidget extends HookConsumerWidget implements PreferredSizeWidget {
+  const SearchDialogAppBarWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,7 +27,9 @@ class SearchInitialAppBarWidget extends HookConsumerWidget
         contentPadding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
         hintText: Intl.message('search_initial_hint'),
         onSubmitted: (text) {
+          Navigator.pop(context);
           ref.read(searchControllerProvider.notifier).addKeyword(text: text);
+          context.goNamed(RouteNames.search, queryParameters: {'index': text});
           keywordController.clear();
         },
       ),

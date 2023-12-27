@@ -5,8 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
 
-class SearchInitialRecentWidget extends HookConsumerWidget {
-  const SearchInitialRecentWidget({super.key});
+class SearchDialogRecentWidget extends HookConsumerWidget {
+  const SearchDialogRecentWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
