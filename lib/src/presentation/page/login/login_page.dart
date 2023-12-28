@@ -30,9 +30,9 @@ class LoginPage extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         children: [
-          LoginLogoWidget(),
+          const LoginLogoWidget(),
           if (loginState is LoginInvalid) const LoginInvalidWidget(),
-          LoginFormWidget(),
+          const LoginFormWidget(),
         ],
       ),
     );

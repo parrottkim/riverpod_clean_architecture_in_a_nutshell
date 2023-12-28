@@ -7,4 +7,7 @@ abstract class ProductRepository {
 
   Future<Product> getProductListWithCategory(
       {required String category, required int start, int limit = 10});
+
+  Future<Product> searchProduct(
+      {required String query, required int start, int limit = 10});
 }

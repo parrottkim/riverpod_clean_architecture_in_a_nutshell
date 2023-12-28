@@ -1,33 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
 
-class SearchDialogRecentWidget extends HookConsumerWidget {
-  const SearchDialogRecentWidget({super.key});
+class SearchInitialRecentWidget extends HookConsumerWidget {
+  const SearchInitialRecentWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final search = ref.watch(searchControllerProvider);
+    final search = ref.watch(keywordControllerProvider);
 
-    final isVisible = useState<bool>(search.recentKeywords.isNotEmpty);
+    final isVisible = useState<bool>(search.keywords.isNotEmpty);
 
-    ref.listen<SearchState>(searchControllerProvider, (_, state) {
-      if (state.recentKeywords.isNotEmpty) {
+    ref.listen<KeywordState>(keywordControllerProvider, (_, state) {
+      if (state.keywords.isNotEmpty) {
         isVisible.value = true;
       }
     });
 
     return AnimatedSize(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeInQuad,
       child: AnimatedOpacity(
-        duration: Duration(milliseconds: 300),
-        opacity: search.recentKeywords.isNotEmpty ? 1 : 0,
+        duration: const Duration(milliseconds: 300),
+        opacity: search.keywords.isNotEmpty ? 1 : 0,
         onEnd: () {
-          if (search.recentKeywords.isEmpty) {
+          if (search.keywords.isEmpty) {
             isVisible.value = false;
           }
         },
@@ -45,10 +47,10 @@ class SearchDialogRecentWidget extends HookConsumerWidget {
                             Intl.message('search_initial_recent'),
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           InkWell(
                             onTap: () async => await ref
-                                .read(searchControllerProvider.notifier)
+                                .read(keywordControllerProvider.notifier)
                                 .removeKeywords(),
                             borderRadius: BorderRadius.circular(12.0),
                             child: Padding(
@@ -65,22 +67,28 @@ class SearchDialogRecentWidget extends HookConsumerWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     SizedBox(
                       height: 31.0,
                       child: ListView.separated(
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
-                        padding: EdgeInsets.symmetric(horizontal: 16.0),
-                        itemCount: search.recentKeywords.length < 10
-                            ? search.recentKeywords.length
-                            : 10,
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        itemCount:
+                            search.keywords.length < 10 ? search.keywords.length : 10,
                         itemBuilder: (context, index) => CustomChip(
-                          onTap: () {},
+                          onTap: () {
+                            ref
+                                .read(keywordControllerProvider.notifier)
+                                .addKeyword(text: search.keywords[index].keyword);
+                            context.goNamed(RouteNames.search, queryParameters: {
+                              'query': search.keywords[index].keyword
+                            });
+                          },
                           borderColor: Theme.of(context).colorScheme.outline,
-                          child: Text(search.recentKeywords[index]),
+                          child: Text(search.keywords[index].keyword),
                         ),
-                        separatorBuilder: (context, index) => SizedBox(width: 4.0),
+                        separatorBuilder: (context, index) => const SizedBox(width: 4.0),
                       ),
                     ),
                   ],

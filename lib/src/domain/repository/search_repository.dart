@@ -1,9 +1,9 @@
 part of '../repository.dart';
 
 abstract class SearchRepository {
-  List<String> getKeywords();
+  List<Keyword> getKeywords();
 
-  Future<void> setKeyword({required String keyword});
+  Future<void> setKeyword({required List<Keyword> keywords});
 
   Future<void> removeKeywords();
 }

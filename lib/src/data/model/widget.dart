@@ -15,7 +15,7 @@ enum PopularKeywordType { fresh, up, down }
 @freezed
 class PopularKeyword with _$PopularKeyword {
   const factory PopularKeyword({
-    required String name,
+    required String keyword,
     required PopularKeywordType type,
   }) = _PopularKeyword;
 }

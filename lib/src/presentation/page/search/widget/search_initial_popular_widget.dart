@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/data/model.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
 
-class SearchDialogPopularWidget extends StatelessWidget {
-  const SearchDialogPopularWidget({super.key});
+class SearchInitialPopularWidget extends StatelessWidget {
+  const SearchInitialPopularWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +39,7 @@ class SearchDialogPopularWidget extends StatelessWidget {
   }
 }
 
-class KeywordListItem extends StatelessWidget {
+class KeywordListItem extends ConsumerWidget {
   final int index;
   final PopularKeyword item;
 
@@ -46,9 +50,12 @@ class KeywordListItem extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        ref.read(keywordControllerProvider.notifier).addKeyword(text: item.keyword);
+        context.goNamed(RouteNames.search, queryParameters: {'query': item.keyword});
+      },
       borderRadius: BorderRadius.circular(8.0),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
@@ -66,7 +73,7 @@ class KeywordListItem extends StatelessWidget {
                 ),
                 const SizedBox(width: 12.0),
                 Text(
-                  item.name,
+                  item.keyword,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const Spacer(),

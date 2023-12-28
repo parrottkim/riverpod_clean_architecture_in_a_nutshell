@@ -27,7 +27,7 @@ class HomeArticleWidget extends StatelessWidget {
                   image: const AssetImage('assets/images/article.png'),
                   fit: BoxFit.cover,
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 Text(
                   Intl.message('home_article_body'),
                   style: Theme.of(context)

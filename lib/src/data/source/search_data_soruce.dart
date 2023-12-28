@@ -6,16 +6,18 @@ class SearchDataSource implements SearchRepository {
   SearchDataSource({required SharedPreferences prefs}) : _prefs = prefs;
 
   @override
-  List<String> getKeywords() {
-    final keywords = _prefs.getStringList('search.keywords');
-    return keywords ?? [];
+  List<Keyword> getKeywords() {
+    final keywords = _prefs.getString('search.keywords');
+    if (keywords == null) {
+      return [];
+    }
+    final list = json.decode(keywords);
+    return List<Keyword>.from(list.map((element) => Keyword.fromJson(element)));
   }
 
   @override
-  Future<void> setKeyword({required String keyword}) async {
-    final keywords = getKeywords();
-    print(keywords);
-    await _prefs.setStringList('search.keywords', [...keywords, keyword]);
+  Future<void> setKeyword({required List<Keyword> keywords}) async {
+    await _prefs.setString('search.keywords', json.encode(keywords));
   }
 
   @override

@@ -160,7 +160,11 @@ class _ShellLayoutState extends State<ShellLayout> with SingleTickerProviderStat
                   const SizedBox(width: 16.0),
                   const Text('path: '),
                   Expanded(
-                    child: Text(GoRouterState.of(context).uri.toString()),
+                    child: Text(
+                      GoRouterState.of(context).uri.toString(),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                   const Padding(
                     padding: EdgeInsets.all(8.0),

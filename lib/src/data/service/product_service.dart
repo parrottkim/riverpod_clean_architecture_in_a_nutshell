@@ -16,11 +16,18 @@ abstract class ProductService {
   @GET('products/{id}')
   Future<ProductElement> getProductById({
     @Path() required int id,
-});
+  });
 
   @GET('products/category/{category}')
   Future<Product> getProductListWithCategory({
     @Path() required String category,
+    @Query('skip') required int start,
+    @Query('limit') required int limit,
+  });
+
+  @GET('product/search')
+  Future<Product> searchProduct({
+    @Query('q') required String query,
     @Query('skip') required int start,
     @Query('limit') required int limit,
   });

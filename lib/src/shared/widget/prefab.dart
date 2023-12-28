@@ -24,43 +24,43 @@ class WidgetPrefab {
 
   static const List<PopularKeyword> popularKeywordItems = [
     PopularKeyword(
-      name: 'Phone',
+      keyword: 'Phone',
       type: PopularKeywordType.up,
     ),
     PopularKeyword(
-      name: 'Macbook',
+      keyword: 'Macbook',
       type: PopularKeywordType.down,
     ),
     PopularKeyword(
-      name: 'Shirts',
+      keyword: 'Shirts',
       type: PopularKeywordType.up,
     ),
     PopularKeyword(
-      name: 'Sunglasses',
+      keyword: 'Sunglasses',
       type: PopularKeywordType.fresh,
     ),
     PopularKeyword(
-      name: 'Watch',
+      keyword: 'Watch',
       type: PopularKeywordType.fresh,
     ),
     PopularKeyword(
-      name: 'Ring',
+      keyword: 'Ring',
       type: PopularKeywordType.down,
     ),
     PopularKeyword(
-      name: 'Perfume',
+      keyword: 'Perfume',
       type: PopularKeywordType.fresh,
     ),
     PopularKeyword(
-      name: 'Motorcycle',
+      keyword: 'Motorcycle',
       type: PopularKeywordType.down,
     ),
     PopularKeyword(
-      name: 'Tops',
+      keyword: 'Tops',
       type: PopularKeywordType.up,
     ),
     PopularKeyword(
-      name: 'Lamp',
+      keyword: 'Lamp',
       type: PopularKeywordType.fresh,
     ),
   ];

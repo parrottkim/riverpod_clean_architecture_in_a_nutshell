@@ -3,6 +3,7 @@ part of '../widget.dart';
 class OutlinedTextField extends StatelessWidget {
   final bool? enabled;
   final bool readOnly;
+  final bool autofocus;
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
   final TextEditingController? controller;
@@ -19,6 +20,7 @@ class OutlinedTextField extends StatelessWidget {
     super.key,
     this.enabled,
     this.readOnly = false,
+    this.autofocus = false,
     this.onChanged,
     this.onSubmitted,
     this.controller,
@@ -37,6 +39,7 @@ class OutlinedTextField extends StatelessWidget {
     return TextField(
       enabled: enabled,
       readOnly: readOnly,
+      autofocus: autofocus,
       onChanged: onChanged,
       onSubmitted: onSubmitted,
       controller: controller,

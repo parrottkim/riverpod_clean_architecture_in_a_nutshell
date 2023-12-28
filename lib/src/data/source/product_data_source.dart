@@ -16,6 +16,11 @@ class ProductDataSource implements ProductRepository {
   Future<Product> getProductListWithCategory(
           {required String category, required int start, int limit = 10}) =>
       _service.getProductListWithCategory(category: category, start: start, limit: limit);
+
+  @override
+  Future<Product> searchProduct(
+          {required String query, required int start, int limit = 10}) =>
+      _service.searchProduct(query: query, start: start, limit: limit);
 }
 
 @riverpod

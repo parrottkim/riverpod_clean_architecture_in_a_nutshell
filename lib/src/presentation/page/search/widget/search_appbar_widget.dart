@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -7,30 +6,30 @@ import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/contr
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
 
-class SearchDialogAppBarWidget extends HookConsumerWidget implements PreferredSizeWidget {
-  const SearchDialogAppBarWidget({super.key});
+class SearchAppBarWidget extends HookConsumerWidget implements PreferredSizeWidget {
+  final TextEditingController controller;
+
+  const SearchAppBarWidget({
+    super.key,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final keywordController = useTextEditingController();
-
-    useListenable(keywordController);
-
     return CustomAppBar(
       leading: CustomIconButton(
         onTap: () => Navigator.pop(context),
         icon: Icons.chevron_left,
       ),
       title: OutlinedTextField(
-        controller: keywordController,
+        controller: controller,
+        autofocus: true,
         prefixIcon: Icons.search,
-        contentPadding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
         hintText: Intl.message('search_initial_hint'),
         onSubmitted: (text) {
-          Navigator.pop(context);
-          ref.read(searchControllerProvider.notifier).addKeyword(text: text);
-          context.goNamed(RouteNames.search, queryParameters: {'index': text});
-          keywordController.clear();
+          ref.read(keywordControllerProvider.notifier).addKeyword(text: text);
+          context.goNamed(RouteNames.search, queryParameters: {'query': text});
         },
       ),
     );

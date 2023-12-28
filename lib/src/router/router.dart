@@ -110,7 +110,7 @@ class AppRouter {
                         pageBuilder: (_, state) => MaterialPage(
                           key: state.pageKey,
                           restorationId: state.pageKey.value,
-                          child: SearchPage(query: state.uri.queryParameters['index']),
+                          child: SearchPage(query: state.uri.queryParameters['query']),
                         ),
                       ),
                     ],
