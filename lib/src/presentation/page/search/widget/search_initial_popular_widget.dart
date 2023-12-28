@@ -10,7 +10,12 @@ import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router.dart
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
 
 class SearchInitialPopularWidget extends StatelessWidget {
-  const SearchInitialPopularWidget({super.key});
+  final TextEditingController controller;
+
+  const SearchInitialPopularWidget({
+    super.key,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,9 @@ class SearchInitialPopularWidget extends StatelessWidget {
           crossAxisCount: 2,
           itemCount: WidgetPrefab.popularKeywordItems.length,
           itemBuilder: (context, index) => KeywordListItem(
-              index: index, item: WidgetPrefab.popularKeywordItems[index]),
+              controller: controller,
+              index: index,
+              item: WidgetPrefab.popularKeywordItems[index]),
           staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
         ),
       ],
@@ -40,11 +47,13 @@ class SearchInitialPopularWidget extends StatelessWidget {
 }
 
 class KeywordListItem extends ConsumerWidget {
+  final TextEditingController controller;
   final int index;
   final PopularKeyword item;
 
   const KeywordListItem({
     super.key,
+    required this.controller,
     required this.index,
     required this.item,
   });
@@ -53,6 +62,7 @@ class KeywordListItem extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
       onTap: () {
+        controller.text = item.keyword;
         ref.read(keywordControllerProvider.notifier).addKeyword(text: item.keyword);
         context.goNamed(RouteNames.search, queryParameters: {'query': item.keyword});
       },
@@ -64,12 +74,16 @@ class KeywordListItem extends ConsumerWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  '${index + 1}',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                      ?.copyWith(fontWeight: FontWeight.w700),
+                SizedBox(
+                  width: 16.0,
+                  child: Text(
+                    '${index + 1}',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium
+                        ?.copyWith(fontWeight: FontWeight.w700),
+                  ),
                 ),
                 const SizedBox(width: 12.0),
                 Text(

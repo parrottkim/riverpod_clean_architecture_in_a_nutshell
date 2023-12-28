@@ -13,8 +13,8 @@ class ProductContentWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final product = ref.watch(productControllerProvider);
-    return switch (product) {
+    final state = ref.watch(productControllerProvider);
+    return switch (state) {
       AsyncData(:final value) => ProductList(state: value),
       _ => _loading(),
     };

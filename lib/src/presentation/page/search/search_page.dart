@@ -17,8 +17,6 @@ class SearchPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print(query);
-
     final search = ref.watch(keywordControllerProvider);
 
     final controller = useTextEditingController();
@@ -29,7 +27,7 @@ class SearchPage extends HookConsumerWidget {
       appBar: SearchAppBarWidget(controller: controller),
       body: switch (search) {
         KeywordInitial() => controller.text.isEmpty
-            ? const SearchInitialFormWidget()
+            ? SearchInitialFormWidget(controller: controller)
             : SearchAutocompleteFormWidget(controller: controller),
         KeywordSearched() =>
           query != null ? SearchCompletedFormWidget(query: query!) : Container(),

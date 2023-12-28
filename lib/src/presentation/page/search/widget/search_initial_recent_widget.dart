@@ -8,7 +8,12 @@ import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router.dart
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
 
 class SearchInitialRecentWidget extends HookConsumerWidget {
-  const SearchInitialRecentWidget({super.key});
+  final TextEditingController controller;
+
+  const SearchInitialRecentWidget({
+    super.key,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -78,6 +83,7 @@ class SearchInitialRecentWidget extends HookConsumerWidget {
                             search.keywords.length < 10 ? search.keywords.length : 10,
                         itemBuilder: (context, index) => CustomChip(
                           onTap: () {
+                            controller.text = search.keywords[index].keyword;
                             ref
                                 .read(keywordControllerProvider.notifier)
                                 .addKeyword(text: search.keywords[index].keyword);

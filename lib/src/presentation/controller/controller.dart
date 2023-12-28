@@ -22,3 +22,5 @@ part 'login/login_controller.dart';
 part 'login/login_state.dart';
 part 'product/product_controller.dart';
 part 'product/product_state.dart';
+part 'search/search_controller.dart';
+part 'search/search_state.dart';

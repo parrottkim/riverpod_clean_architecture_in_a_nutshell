@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/data/model.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router.dart';
 
 class SearchAutocompleteFormWidget extends ConsumerWidget {
   final TextEditingController controller;
@@ -26,30 +28,39 @@ class SearchAutocompleteFormWidget extends ConsumerWidget {
       shrinkWrap: true,
       children: [
         ...keywords.map(
-          (element) => AutocompleteListItem(icon: Icons.history, item: element),
+          (element) => AutocompleteListItem(
+              controller: controller, icon: Icons.history, item: element),
         ),
         ...categories.map(
-          (element) => AutocompleteListItem(icon: Icons.search, item: element),
+          (element) => AutocompleteListItem(
+              controller: controller, icon: Icons.search, item: element),
         ),
       ],
     );
   }
 }
 
-class AutocompleteListItem extends StatelessWidget {
+class AutocompleteListItem extends ConsumerWidget {
+  final TextEditingController controller;
   final IconData icon;
   final dynamic item;
 
   const AutocompleteListItem({
     super.key,
+    required this.controller,
     required this.icon,
     required this.item,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        final text = item is Keyword ? item.keyword : item.tag;
+        controller.text = text;
+        ref.read(keywordControllerProvider.notifier).addKeyword(text: text);
+        context.goNamed(RouteNames.search, queryParameters: {'query': text});
+      },
       child: Ink(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
         child: Row(

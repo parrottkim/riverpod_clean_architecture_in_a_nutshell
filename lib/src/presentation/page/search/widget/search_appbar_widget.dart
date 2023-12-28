@@ -27,6 +27,7 @@ class SearchAppBarWidget extends HookConsumerWidget implements PreferredSizeWidg
         prefixIcon: Icons.search,
         contentPadding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
         hintText: Intl.message('search_initial_hint'),
+        onChanged: (text) => ref.invalidate(keywordControllerProvider),
         onSubmitted: (text) {
           ref.read(keywordControllerProvider.notifier).addKeyword(text: text);
           context.goNamed(RouteNames.search, queryParameters: {'query': text});
