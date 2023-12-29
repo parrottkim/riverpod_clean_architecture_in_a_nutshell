@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
 
-class AccountPage extends ConsumerWidget {
-  const AccountPage({super.key});
+class AccountScreen extends ConsumerWidget {
+  const AccountScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

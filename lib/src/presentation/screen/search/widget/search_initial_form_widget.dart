@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/search/widget/search_initial_popular_widget.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/search/widget/search_initial_recent_widget.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/search/widget/search_initial_popular_widget.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/search/widget/search_initial_recent_widget.dart';
 
 class SearchInitialFormWidget extends StatelessWidget {
   final TextEditingController controller;

@@ -32,6 +32,7 @@ class SearchInitialPopularWidget extends StatelessWidget {
         const SizedBox(height: 16.0),
         StaggeredGridView.countBuilder(
           shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           crossAxisCount: 2,
           itemCount: WidgetPrefab.popularKeywordItems.length,

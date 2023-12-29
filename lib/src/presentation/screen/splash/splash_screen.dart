@@ -3,19 +3,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
 
-class SplashPage extends ConsumerStatefulWidget {
+class SplashScreen extends ConsumerStatefulWidget {
   final String? path;
 
-  const SplashPage({
+  const SplashScreen({
     super.key,
     this.path,
   });
 
   @override
-  ConsumerState<SplashPage> createState() => _SplashPageState();
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashPageState extends ConsumerState<SplashPage> {
+class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
     super.initState();

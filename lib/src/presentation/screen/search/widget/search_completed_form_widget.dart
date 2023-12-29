@@ -18,7 +18,7 @@ class SearchCompletedFormWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(searchControllerProvider(query: query));
+    final state = ref.watch(searchControllerProvider(query));
 
     return switch (state) {
       AsyncData(:final value) => ProductList(state: value),
@@ -66,7 +66,7 @@ class ProductList extends ConsumerWidget {
       ),
       onNotification: (notification) {
         if (notification.metrics.pixels >= notification.metrics.maxScrollExtent - 20.0) {
-          ref.read(productControllerProvider.notifier).loadMore();
+          ref.read(searchControllerProvider(state.query).notifier).loadMore();
         }
         return false;
       },

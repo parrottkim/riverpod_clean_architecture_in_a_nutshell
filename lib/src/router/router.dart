@@ -3,12 +3,12 @@ import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/layout/dashboard_layout.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/layout/shell_layout.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/account/account_page.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/home/home_page.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/login/login_page.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/product/product_page.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/search/search_page.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/splash/splash_page.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/account/account_screen.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/home/home_screen.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/login/login_screen.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/product/product_screen.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/search/search_screen.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/splash/splash_screen.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router_interceptor.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router_notifier.dart';
 
@@ -74,7 +74,7 @@ class AppRouter {
             path: Routes.splash,
             pageBuilder: (context, state) {
               String? path = state.uri.queryParameters['redirect_to'];
-              return NoTransitionPage(child: SplashPage(path: path));
+              return NoTransitionPage(child: SplashScreen(path: path));
             },
           ),
           GoRoute(
@@ -83,7 +83,7 @@ class AppRouter {
             pageBuilder: (context, state) {
               String? path = state.uri.queryParameters['redirect_to'];
               return buildFadeTransition(
-                  context: context, state: state, child: LoginPage(path: path));
+                  context: context, state: state, child: LoginScreen(path: path));
             },
           ),
           StatefulShellRoute.indexedStack(
@@ -100,7 +100,7 @@ class AppRouter {
                     name: RouteNames.product,
                     path: Routes.product,
                     pageBuilder: (_, __) => const NoTransitionPage(
-                      child: ProductPage(),
+                      child: ProductScreen(),
                     ),
                     routes: [
                       GoRoute(
@@ -110,7 +110,7 @@ class AppRouter {
                         pageBuilder: (_, state) => MaterialPage(
                           key: state.pageKey,
                           restorationId: state.pageKey.value,
-                          child: SearchPage(query: state.uri.queryParameters['query']),
+                          child: SearchScreen(query: state.uri.queryParameters['query']),
                         ),
                       ),
                     ],
@@ -124,7 +124,7 @@ class AppRouter {
                     name: RouteNames.home,
                     path: Routes.home,
                     pageBuilder: (_, __) => const NoTransitionPage(
-                      child: HomePage(),
+                      child: HomeScreen(),
                     ),
                   ),
                 ],
@@ -136,7 +136,7 @@ class AppRouter {
                     name: RouteNames.account,
                     path: Routes.account,
                     pageBuilder: (_, __) => const NoTransitionPage(
-                      child: AccountPage(),
+                      child: AccountScreen(),
                     ),
                   ),
                 ],

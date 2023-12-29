@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/login/widget/login_form_widget.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/login/widget/login_invalid_widget.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/page/login/widget/login_logo_widget.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/login/widget/login_form_widget.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/login/widget/login_invalid_widget.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/login/widget/login_logo_widget.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router.dart';
 
-class LoginPage extends ConsumerWidget {
+class LoginScreen extends ConsumerWidget {
   final String? path;
 
-  const LoginPage({
+  const LoginScreen({
     super.key,
     this.path,
   });
