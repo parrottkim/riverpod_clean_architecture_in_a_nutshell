@@ -6,6 +6,85 @@ part of 'model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$CartImpl _$$CartImplFromJson(Map<String, dynamic> json) => _$CartImpl(
+      carts: (json['carts'] as List<dynamic>)
+          .map((e) => CartElement.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      total: json['total'] as int,
+      skip: json['skip'] as int,
+      limit: json['limit'] as int,
+    );
+
+Map<String, dynamic> _$$CartImplToJson(_$CartImpl instance) =>
+    <String, dynamic>{
+      'carts': instance.carts,
+      'total': instance.total,
+      'skip': instance.skip,
+      'limit': instance.limit,
+    };
+
+_$CartElementImpl _$$CartElementImplFromJson(Map<String, dynamic> json) =>
+    _$CartElementImpl(
+      id: json['id'] as int,
+      products: (json['products'] as List<dynamic>)
+          .map((e) => CartProductElement.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      total: json['total'] as int,
+      discountedTotal: json['discountedTotal'] as int,
+      userId: json['userId'] as int,
+      totalCartProductElements: json['totalCartProductElements'] as int,
+      totalQuantity: json['totalQuantity'] as int,
+    );
+
+Map<String, dynamic> _$$CartElementImplToJson(_$CartElementImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'products': instance.products,
+      'total': instance.total,
+      'discountedTotal': instance.discountedTotal,
+      'userId': instance.userId,
+      'totalCartProductElements': instance.totalCartProductElements,
+      'totalQuantity': instance.totalQuantity,
+    };
+
+_$CartProductElementImpl _$$CartProductElementImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CartProductElementImpl(
+      id: json['id'] as int,
+      title: json['title'] as String,
+      price: json['price'] as int,
+      quantity: json['quantity'] as int,
+      total: json['total'] as int,
+      discountPercentage: (json['discountPercentage'] as num).toDouble(),
+      discountedPrice: json['discountedPrice'] as int,
+      thumbnail: json['thumbnail'] as String,
+    );
+
+Map<String, dynamic> _$$CartProductElementImplToJson(
+        _$CartProductElementImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'price': instance.price,
+      'quantity': instance.quantity,
+      'total': instance.total,
+      'discountPercentage': instance.discountPercentage,
+      'discountedPrice': instance.discountedPrice,
+      'thumbnail': instance.thumbnail,
+    };
+
+_$KeywordImpl _$$KeywordImplFromJson(Map<String, dynamic> json) =>
+    _$KeywordImpl(
+      keyword: json['keyword'] as String,
+      date: DateTime.parse(json['date'] as String),
+    );
+
+Map<String, dynamic> _$$KeywordImplToJson(_$KeywordImpl instance) =>
+    <String, dynamic>{
+      'keyword': instance.keyword,
+      'date': instance.date.toIso8601String(),
+    };
+
 _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
     _$ProductImpl(
       products: (json['products'] as List<dynamic>)
@@ -56,6 +135,41 @@ Map<String, dynamic> _$$ProductElementImplToJson(
       'images': instance.images,
     };
 
+_$TokenImpl _$$TokenImplFromJson(Map<String, dynamic> json) => _$TokenImpl(
+      token: json['token'] as String,
+    );
+
+Map<String, dynamic> _$$TokenImplToJson(_$TokenImpl instance) =>
+    <String, dynamic>{
+      'token': instance.token,
+    };
+
+_$DecodedTokenImpl _$$DecodedTokenImplFromJson(Map<String, dynamic> json) =>
+    _$DecodedTokenImpl(
+      id: json['id'] as int,
+      username: json['username'] as String,
+      email: json['email'] as String,
+      firstName: json['firstName'] as String,
+      lastName: json['lastName'] as String,
+      gender: json['gender'] as String,
+      image: json['image'] as String,
+      iat: json['iat'] as int,
+      exp: json['exp'] as int,
+    );
+
+Map<String, dynamic> _$$DecodedTokenImplToJson(_$DecodedTokenImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'username': instance.username,
+      'email': instance.email,
+      'firstName': instance.firstName,
+      'lastName': instance.lastName,
+      'gender': instance.gender,
+      'image': instance.image,
+      'iat': instance.iat,
+      'exp': instance.exp,
+    };
+
 _$LoginRequestImpl _$$LoginRequestImplFromJson(Map<String, dynamic> json) =>
     _$LoginRequestImpl(
       username: json['username'] as String,
@@ -66,29 +180,6 @@ Map<String, dynamic> _$$LoginRequestImplToJson(_$LoginRequestImpl instance) =>
     <String, dynamic>{
       'username': instance.username,
       'password': instance.password,
-    };
-
-_$TokenImpl _$$TokenImplFromJson(Map<String, dynamic> json) => _$TokenImpl(
-      id: json['id'] as int,
-      username: json['username'] as String,
-      email: json['email'] as String,
-      firstName: json['firstName'] as String,
-      lastName: json['lastName'] as String,
-      gender: json['gender'] as String,
-      image: json['image'] as String,
-      token: json['token'] as String,
-    );
-
-Map<String, dynamic> _$$TokenImplToJson(_$TokenImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'username': instance.username,
-      'email': instance.email,
-      'firstName': instance.firstName,
-      'lastName': instance.lastName,
-      'gender': instance.gender,
-      'image': instance.image,
-      'token': instance.token,
     };
 
 _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(

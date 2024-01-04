@@ -21,6 +21,21 @@ final authRepositoryProvider = AutoDisposeProvider<AuthRepository>.internal(
 );
 
 typedef AuthRepositoryRef = AutoDisposeProviderRef<AuthRepository>;
+String _$cartRepositoryHash() => r'effe9f2edd8c1bde4153ee1f91dc72a1057b092b';
+
+/// See also [cartRepository].
+@ProviderFor(cartRepository)
+final cartRepositoryProvider = AutoDisposeProvider<CartRepository>.internal(
+  cartRepository,
+  name: r'cartRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$cartRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef CartRepositoryRef = AutoDisposeProviderRef<CartRepository>;
 String _$localRepositoryHash() => r'f1d73e7f681db3bdb875dc4168332313d9edb743';
 
 /// See also [localRepository].
@@ -52,5 +67,20 @@ final productRepositoryProvider =
 );
 
 typedef ProductRepositoryRef = AutoDisposeProviderRef<ProductRepository>;
+String _$searchRepositoryHash() => r'f3f368cc26808010aebdc11adc86eecd0e641b05';
+
+/// See also [searchRepository].
+@ProviderFor(searchRepository)
+final searchRepositoryProvider = AutoDisposeProvider<SearchRepository>.internal(
+  searchRepository,
+  name: r'searchRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$searchRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef SearchRepositoryRef = AutoDisposeProviderRef<SearchRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

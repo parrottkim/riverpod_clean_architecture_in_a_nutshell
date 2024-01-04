@@ -53,5 +53,19 @@ final sharedPreferencesProvider =
 );
 
 typedef SharedPreferencesRef = AutoDisposeProviderRef<SharedPreferences>;
+String _$toastHash() => r'adfdae05cdea654daed57c30abf4831e90791e78';
+
+/// See also [toast].
+@ProviderFor(toast)
+final toastProvider = AutoDisposeProvider<FToast>.internal(
+  toast,
+  name: r'toastProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$toastHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef ToastRef = AutoDisposeProviderRef<FToast>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
