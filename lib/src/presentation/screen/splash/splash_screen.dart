@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/widget/logo.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   final String? path;

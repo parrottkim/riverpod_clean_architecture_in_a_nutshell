@@ -6,6 +6,7 @@ import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/layou
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/account/account_screen.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/home/home_screen.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/login/login_screen.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/product/product_detail_page.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/product/product_screen.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/search/search_screen.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/splash/splash_screen.dart';
@@ -25,6 +26,7 @@ class RouteNames {
   static const String login = 'login';
   static const String home = 'home';
   static const String product = 'product';
+  static const String productDetail = 'productDetail';
   static const String account = 'account';
   static const String search = 'search';
 }
@@ -34,6 +36,7 @@ class Routes {
   static const String login = '/login';
   static const String home = '/home';
   static const String product = '/product';
+  static const String productDetail = 'detail';
   static const String account = '/account';
   static const String search = 'search';
 }
@@ -111,6 +114,17 @@ class AppRouter {
                           key: state.pageKey,
                           restorationId: state.pageKey.value,
                           child: SearchScreen(query: state.uri.queryParameters['query']),
+                        ),
+                      ),
+                      GoRoute(
+                        name: RouteNames.productDetail,
+                        path: Routes.productDetail,
+                        parentNavigatorKey: _shellKey,
+                        pageBuilder: (_, state) => MaterialPage(
+                          key: state.pageKey,
+                          restorationId: state.pageKey.value,
+                          child: ProductDetailPage(
+                              query: state.uri.queryParameters['query']),
                         ),
                       ),
                     ],

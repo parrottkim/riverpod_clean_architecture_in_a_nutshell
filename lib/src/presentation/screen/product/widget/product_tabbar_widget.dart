@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/data/model.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/product/product_screen.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/widget/chip.dart';
 
 class ProductTabBarWidget extends ConsumerWidget implements PreferredSizeWidget {
   const ProductTabBarWidget({super.key});

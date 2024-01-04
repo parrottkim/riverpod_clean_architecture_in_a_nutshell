@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/widget.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/widget/logo.dart';
 
 class LoginLogoWidget extends StatelessWidget {
   const LoginLogoWidget({super.key});
