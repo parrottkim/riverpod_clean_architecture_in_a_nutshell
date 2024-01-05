@@ -16,8 +16,8 @@ Flutter project for a sample app implementing key requirements suitable for prod
 - Dark Mode
 - Routing
 
-### Reinterpreted Clean Architecture
-**Bite off more than you can chew**
+## Reinterpreted Clean Architecture
+### Bite off more than you can chew
 
 If the backend provides well-refined domain logic, you shouldn't have to implement all elements of Clean Architecture. 
 You could achieve a more simplified structure by combining the Domain layer and Data Layer.
