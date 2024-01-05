@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/widget/appbar.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/widget/button.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/widget/text_field.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/common/appbar.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/common/button.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/common/text_field.dart';
 
 class AccountScreen extends ConsumerWidget {
   const AccountScreen({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/widget/button.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/common/button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;

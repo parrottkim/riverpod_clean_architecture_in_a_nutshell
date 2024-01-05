@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/controller/controller.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/widget/logo.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/widget/product_list_widget.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/common/logo.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/common/product_list_widget.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/shared/theme/theme.dart';
 
 class ProductContentWidget extends ConsumerWidget {

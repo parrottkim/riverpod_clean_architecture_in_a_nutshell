@@ -4,9 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/product/product_screen.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/screen/product/widget/product_tabbar_widget.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/widget/appbar.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/widget/button.dart';
-import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/widget/text_field.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/common/appbar.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/common/button.dart';
+import 'package:riverpod_clean_architecture_in_a_nutshell/src/presentation/common/text_field.dart';
 import 'package:riverpod_clean_architecture_in_a_nutshell/src/router/router.dart';
 
 class ProductAppBarWidget extends ConsumerWidget implements PreferredSizeWidget {
