@@ -49,37 +49,49 @@ class ProductListWidgetItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Ink.image(
-                fit: BoxFit.cover,
-                image: CachedNetworkImageProvider(
-                  item.thumbnail,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {},
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              color: Colors.transparent,
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: CachedNetworkImage(
+                  imageUrl: item.thumbnail,
+                  placeholder: (context, url) => Shimmer.fromColors(
+                    baseColor: Theme.of(context).colorScheme.shadow.withOpacity(0.1),
+                    highlightColor:
+                        Theme.of(context).colorScheme.shadow.withOpacity(0.15),
+                    child: Container(
+                      color: Colors.white,
+                    ),
+                  ),
+                  fit: BoxFit.cover,
+                  fadeOutDuration: const Duration(milliseconds: 300),
+                  fadeInDuration: const Duration(milliseconds: 300),
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: 4.0),
-          Text(
-            item.title,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
-          ),
-          Text(
-            '\$${item.price}',
-          ),
-        ],
+            const SizedBox(height: 4.0),
+            Text(
+              item.title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
+            Text(
+              '\$${item.price}',
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -2,11 +2,19 @@
 
 Flutter project for a sample app implementing key requirements suitable for production services.
 
+|                                             <div style="width:290px">Login, Home and Product Screen</div>                                             |                                                  <div style="width:290px">Product Search Page</div>                                                   |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
+| ![RPReplay_Final1704447051 2](https://github.com/parrottkim/flutter_riverpod_clean_architecture/assets/83802425/b838750a-c672-40f7-8d18-15ed6d47cc57) | ![RPReplay_Final1704447051 3](https://github.com/parrottkim/flutter_riverpod_clean_architecture/assets/83802425/c5140bfa-4e6d-4ef7-9eae-8e0d32f13629) |
+
+
+
 ## Requirement
 - Clean Architecture
 - HTTP Communication
 - Global Exception Handling
 - Localization
+- Dark Mode
+- Routing
 
 ### Reinterpreted Clean Architecture
 **Bite off more than you can chew**
