@@ -53,7 +53,7 @@ The simplified folder structure is as follows.
 - **Model** (lib/src/data/model): It is used to structure data obtained from external sources. Contains extension methods for converting data into a model.
 - **Repository Abstraction** (lib/src/data/repository): A repository abstraction part.
 - **handles External Communicationss** (lib/src/data/service): It typically handles interactions with external systems, communication with external APIs, and connections to data sources.
-- **Data Source and Repository Implementation** (lib/src/data/source): It is responsible for fetching data from an external source, in this example a external APIs.
+- **Data Source and Repository Implementation** (lib/src/data/source): It is responsible for fetching data from an external source, like HTTP requests, database queries, or messaging queues.
 
 **2. Presentation**
 - **Common Widgets** (lib/src/presentation/common): Define Widgets that are commonly used.
