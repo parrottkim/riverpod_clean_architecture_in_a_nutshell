@@ -18,7 +18,13 @@ Dio http(HttpRef ref) {
 @riverpod
 InterceptorsWrapper authorizedInterceptors(AuthorizedInterceptorsRef ref) {
   return InterceptorsWrapper(
-    onRequest: (options, handler) => handler.next(options),
+    onRequest: (options, handler) {
+      // final token = ref.watch(localRepositoryProvider).getToken();
+      // if (!token.isEmpty() && options.path != 'members/sign') {
+      //   options.headers['Authorization'] = 'Bearer ${token.accessToken}';
+      // }
+      handler.next(options);
+    },
     onResponse: (options, handler) => handler.next(options),
   );
 }
