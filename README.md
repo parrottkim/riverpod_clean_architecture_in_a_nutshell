@@ -6,7 +6,8 @@ Flutter project for a sample app implementing key requirements suitable for prod
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/parrottkim/riverpod_clean_architecture_in_a_nutshell/assets/83802425/b849427f-0fe7-4a7a-8e7b-abcd86999a37" width="300"/> | <img src="https://github.com/parrottkim/riverpod_clean_architecture_in_a_nutshell/assets/83802425/76931b31-e3dc-418b-80df-8a059992137e" width="300"/> |
 
-
+## REST API
+[DummyJSON](https://dummyjson.com/)
 
 ## Requirement
 - Clean Architecture
